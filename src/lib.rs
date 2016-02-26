@@ -1,5 +1,3 @@
-use std::io::Read;
-
 pub mod desc;
 pub mod read;
 pub mod instruction;

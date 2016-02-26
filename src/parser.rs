@@ -1,11 +1,9 @@
 use std::{self, fmt, error};
-use std::io::{self, Read};
+use std::io;
 
 use super::{RawInstruction};
 use desc::{self, Id, ValueId, TypeId, ResultId, Op};
-use module::{self, Header};
 use instruction::{self, Instruction};
-use read;
 
 pub type Result<T> = std::result::Result<T, ParseError>;
 

@@ -1,6 +1,6 @@
 use desc::{TypeId, Id};
 use instruction::Decoration;
-use module::id_map::{self, IdMap, IdMapBuilder};
+use module::id_map::{IdMap, IdMapBuilder};
 
 type MemberDecoration = (u32, Vec<Decoration>);
 

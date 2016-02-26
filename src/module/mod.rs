@@ -1,10 +1,8 @@
 use std;
-use std::collections::HashMap;
 use std::io::Read;
 
 use desc::{self, TypeId, ValueId, Id};
-use instruction::{self,
-    Instruction, ExecutionMode};
+use instruction::{self, Instruction};
 use parser::{self, Result};
 use read::Reader;
 
@@ -352,7 +350,7 @@ impl Module {
                 multisampled,
                 sampled,
                 image_format,
-                access_qualifier
+                access_qualifier: _
             } => {
                 let sample_ty = self.ty(sample_type).expect("Missing sample type");
                 let sample_ty = self.ty_to_string(sample_ty);
@@ -457,7 +455,7 @@ impl Module {
             Ty::Opaque(ref n) => {
                 format!("opaque {}", n.to_owned())
             }
-            Ty::Pointer(sc, ty) => {
+            Ty::Pointer(_, ty) => {
                 let ty = self.ty(ty).expect("Missing pointee type");
                 format!("*{}", self.ty_to_string(ty))
             }
