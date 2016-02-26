@@ -1,8 +1,7 @@
 use std;
 use std::io::{Result, Read};
 
-use super::{RawInstruction};
-use module::Header;
+use module::{RawInstruction, Header};
 
 const MAGIC_NUMBER : u32 = 0x07230203;
 

@@ -6,6 +6,12 @@ use instruction::{self, Instruction};
 use parser::{self, Result};
 use read::Reader;
 
+#[derive(Clone, Debug)]
+pub struct RawInstruction {
+    pub opcode: u16,
+    pub params: Vec<u32>
+}
+
 pub mod id_map;
 pub mod decoration;
 
