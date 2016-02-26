@@ -1,0 +1,4 @@
+[package]
+name = "spir-v"
+version = "0.1.0"
+authors = ["James Miller <james@aatch.net>"]
