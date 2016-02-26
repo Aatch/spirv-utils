@@ -30,6 +30,7 @@ pub struct Module {
     member_names: IdMap<Vec<(u32, String)>>,
     decorations: DecorationMap,
     entry_points: Vec<EntryPoint>,
+    instructions: Vec<Instruction>
 }
 
 impl Module {
@@ -44,6 +45,7 @@ impl Module {
         let mut member_names : id_map::IdMapBuilder<Vec<_>> = id_map::IdMapBuilder::new();
         let mut decorations = decoration::DecorationMapBuilder::new();
         let mut entry_points = Vec::new();
+        let mut instructions = Vec::new();
 
         while let Some(raw_inst) = try!(rdr.read_instruction()) {
             let inst = try!(parser::parse_raw_instruction(raw_inst));
@@ -52,28 +54,31 @@ impl Module {
                 Instruction::Capability(cap) => {
                     capabilities.push(cap);
                 }
-                Instruction::Name(id, n) => {
-                    names.insert((id, n));
+                Instruction::Name(id, ref n) => {
+                    names.insert((id, n.clone()));
                 }
-                Instruction::MemberName(id, m, n) => {
+                Instruction::MemberName(id, m, ref n) => {
                     let id : Id = id.into();
-                    if let Some(entry) = member_names.get_mut(id) {
-                        entry.1.push((m, n));
-                        continue;
+                    let n = n.clone();
+                    if member_names.contains(id) {
+                        if let Some(entry) = member_names.get_mut(id) {
+                            entry.1.push((m, n));
+                        }
+                    } else {
+                        member_names.insert((id, vec![(m, n)]));
                     }
-                    member_names.insert((id, vec![(m, n)]));
                 }
-                Instruction::Decorate(id, dec) => {
-                    decorations.insert_decoration(id, dec);
+                Instruction::Decorate(id, ref dec) => {
+                    decorations.insert_decoration(id, dec.clone());
                 }
-                Instruction::MemberDecorate(id, m, dec) => {
-                    decorations.insert_member_decoration(id, m, dec);
+                Instruction::MemberDecorate(id, m, ref dec) => {
+                    decorations.insert_member_decoration(id, m, dec.clone());
                 }
-                Instruction::EntryPoint(model, _, name, iface) => {
+                Instruction::EntryPoint(model, _, ref name, ref iface) => {
                     let ep = EntryPoint {
                         execution_model: model,
-                        name: name,
-                        interface: iface
+                        name: name.clone(),
+                        interface: iface.clone()
                     };
 
                     entry_points.push(ep);
@@ -184,10 +189,10 @@ impl Module {
                     };
                     types.insert(ty);
                 }
-                Instruction::TypeStruct(id, flds) => {
+                Instruction::TypeStruct(id, ref flds) => {
                     let ty = Type {
                         id: id.to_type_id(),
-                        ty: Ty::Struct(flds)
+                        ty: Ty::Struct(flds.clone())
                     };
                     types.insert(ty);
                 }
@@ -210,7 +215,7 @@ impl Module {
                     let c = Constant::bool(id.to_value_id(), ty, false);
                     constants.insert(c);
                 }
-                Instruction::Constant(ty, id, vals) => {
+                Instruction::Constant(ty, id, ref vals) => {
                     let ty = types.get(ty).expect("Types should be defined before use");
                     let c = Constant::scalar(id.to_value_id(), ty, vals);
                     constants.insert(c);
@@ -242,11 +247,10 @@ impl Module {
 
                     variables.insert(v);
                 }
-
-                // Stop at the first function for the moment
-                Instruction::Function(..) => break,
                 _ => ()
             }
+
+            instructions.push(inst);
         }
 
         return Ok(Module {
@@ -259,6 +263,7 @@ impl Module {
             member_names: member_names.into_id_map(),
             decorations: decorations.into_decoration_map(),
             entry_points: entry_points,
+            instructions: instructions
         });
 
         fn find_spec_id(dec_map: &decoration::DecorationMapBuilder, id: Id) -> Option<u32> {
@@ -604,7 +609,7 @@ impl Constant {
         }
     }
 
-    pub fn scalar(id: ValueId, ty: &Type, vals: Box<[u32]>) -> Constant {
+    pub fn scalar(id: ValueId, ty: &Type, vals: &Box<[u32]>) -> Constant {
         let value = match ty.ty {
             Ty::UInt(w) if w <= 32 => {
                 ConstantValue::UInt(vals[0] as u64)
@@ -639,7 +644,7 @@ impl Constant {
                 ConstantValue::F64(val)
             }
             _ => {
-                ConstantValue::General(vals)
+                ConstantValue::General(vals.clone())
             }
         };
 

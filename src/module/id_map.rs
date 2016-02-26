@@ -35,6 +35,17 @@ impl<V: GetId> RawIdMapBuilder<V> {
         self.values.push(val);
     }
 
+    pub fn contains(&self, id: V::Id) -> bool {
+        let id : Id = id.into();
+
+        // We reverse because normally lookups at the build stage
+        // are for elements more recently added
+        self.values.iter().rev().find(|v| {
+            let vid : Id = v.get_id().into();
+            vid == id
+        }).is_some()
+    }
+
     pub fn get<'a>(&'a self, id: V::Id) -> Option<&'a V> {
         let id : Id = id.into();
 
