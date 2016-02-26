@@ -1,5 +1,5 @@
 [package]
-name = "spir-v"
+name = "spirv-utils"
 description = "SPIR-V Utilities library"
 version = "0.1.0"
 authors = ["James Miller <james@aatch.net>"]

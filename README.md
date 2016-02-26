@@ -1,4 +1,4 @@
-# SPIR-V
+# SPIR-V Utils
 
 SPIR-V Utility library for Rust
 
