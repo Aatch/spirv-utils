@@ -1,4 +1,10 @@
 [package]
 name = "spir-v"
+description = "SPIR-V Utilities library"
 version = "0.1.0"
 authors = ["James Miller <james@aatch.net>"]
+license = "Apache-2.0/MIT"
+readme = "README.md"
+keywords = ["spir-v", "spirv", "vulkan"]
+
+repository = "https://github.com/Aatch/spirv-rs"
