@@ -3,8 +3,7 @@ use std::io::Read;
 
 use desc::{self, TypeId, ValueId, Id};
 use instruction::{self, Instruction};
-use parser::{self, Result};
-use read::Reader;
+use parse::{self, Result, Reader};
 
 #[derive(Clone, Debug)]
 pub struct RawInstruction {
@@ -54,7 +53,7 @@ impl Module {
         let mut instructions = Vec::new();
 
         while let Some(raw_inst) = try!(rdr.read_instruction()) {
-            let inst = try!(parser::parse_raw_instruction(raw_inst));
+            let inst = try!(parse::parse_raw_instruction(raw_inst));
 
             match inst {
                 Instruction::Capability(cap) => {
