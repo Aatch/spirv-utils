@@ -1,9 +1,15 @@
+// Copyright 2016 James Miller
+//
+// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
+
 use std;
 use std::io::{Read};
 
-use super::Result;
-
-use module::{RawInstruction, Header};
+use super::{Result, RawInstruction, Header};
 
 const MAGIC_NUMBER : u32 = 0x07230203;
 
@@ -27,7 +33,7 @@ impl<R: Read> Reader<R> {
         } else if word.swap_bytes() == MAGIC_NUMBER {
             true
         } else {
-            panic!("Invalid Magic Word: {:#x}", word)
+            return Err(super::ParseError::InvalidMagicNumber(word));
         };
 
         Ok(Reader {

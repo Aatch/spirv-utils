@@ -1,167 +1,19 @@
+// Copyright 2016 James Miller
+//
+// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
+// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
+// option. This file may not be copied, modified, or distributed
+// except according to those terms.
+
 use std;
 
-use super::{ParseError, Result};
+use super::{RawInstruction, ParseError, Result};
 
-use module::RawInstruction;
 use desc::{self, Id, ValueId, TypeId, ResultId, Op};
-use instruction::{self, Instruction};
+use instruction::{self, Instruction, Decoration, ExecutionMode, ImageOperands};
 
-pub fn parse_raw_instruction(raw_inst: RawInstruction) -> Result<Instruction> {
-    let op = if let Some(op) = desc::Op::from(raw_inst.opcode) {
-        op
-    } else {
-        return Err(ParseError::UnknownOpcode(raw_inst.opcode));
-    };
-
-
-    let mut p = InstructionParser { params: &raw_inst.params };
-
-    macro_rules! parse_inst (
-        ($p:ident, $op:ident, { $($name:ident $t:tt;)+ }) => (
-            match $op {$(
-                Op::$name => { _parse_inst_body!($p, $name, $t) })+
-                       _ => Instruction::Unknown($op as u16, $p.params.to_owned().into_boxed_slice())
-            }
-            );
-        );
-
-    macro_rules! _parse_inst_body (
-        ($p:ident, $name:ident, ()) => (
-            Instruction::$name
-                );
-        ($p:ident, $name:ident, ($($t:ty),+)) => (
-            Instruction::$name($(try!($p.parse::<$t>())),*)
-                );
-
-        ($p:ident, $name:ident, $body:expr) => (
-            $body
-                );
-        );
-    let inst = parse_inst!(p, op, {
-        Nop();
-        Undef(TypeId, ResultId);
-        SourceContinued(String);
-        Source {
-            let lang = try!(p.parse::<desc::SrcLang>());
-            let vers = try!(p.parse_word());
-            let mut id = ValueId(0);
-            if p.has_words() {
-                id = try!(p.parse::<ValueId>());
-            }
-            let mut src = None;
-            if p.has_words() {
-                src = Some(try!(p.parse::<String>()));
-            }
-
-            Instruction::Source(lang, vers, id, src)
-        };
-        SourceExtension(String);
-        Name(Id, String);
-        MemberName(TypeId, u32, String);
-        String(ResultId, String);
-        Line(ValueId, u32, u32);
-        Extension(String);
-        ExtInstImport(ResultId, String);
-        ExtInst(TypeId, ResultId, ValueId, u32, Box<[Id]>);
-        MemoryModel(desc::AddressingModel, desc::MemoryModel);
-        EntryPoint(desc::ExecutionModel, ValueId, String, Box<[ValueId]>);
-        ExecutionMode(ValueId, instruction::ExecutionMode);
-        Capability(desc::Capability);
-
-        TypeVoid(ResultId);
-        TypeBool(ResultId);
-        TypeInt(ResultId, u32, bool);
-        TypeFloat(ResultId, u32);
-        TypeVector(ResultId, TypeId, u32);
-        TypeMatrix(ResultId, TypeId, u32);
-        TypeImage(ResultId, TypeId, desc::Dim, u32,
-                bool, bool, u32, desc::ImageFormat,
-                Option<desc::AccessQualifier>);
-        TypeSampler(ResultId);
-        TypeSampledImage(ResultId, TypeId);
-        TypeArray(ResultId, TypeId, ValueId);
-        TypeRuntimeArray(ResultId, TypeId);
-        TypeStruct(ResultId, Box<[TypeId]>);
-        TypeOpaque(ResultId, String);
-        TypePointer(ResultId, desc::StorageClass, TypeId);
-        TypeFunction(ResultId, TypeId, Box<[TypeId]>);
-        TypeEvent(ResultId);
-        TypeDeviceEvent(ResultId);
-        TypeReserveId(ResultId);
-        TypeQueue(ResultId);
-        TypePipe(ResultId);
-        TypeForwardPointer(ResultId, desc::StorageClass);
-
-        ConstantTrue(TypeId, ResultId);
-        ConstantFalse(TypeId, ResultId);
-        Constant(TypeId, ResultId, Box<[u32]>);
-        ConstantComposite(TypeId, ResultId, Box<[ValueId]>);
-        ConstantSampler(TypeId, ResultId, desc::SamplerAddressingMode, bool, desc::SamplerFilterMode);
-        ConstantNull(TypeId, ResultId);
-        SpecConstantTrue(TypeId, ResultId);
-        SpecConstantFalse(TypeId, ResultId);
-        SpecConstant(TypeId, ResultId, Box<[u32]>);
-        SpecConstantComposite(TypeId, ResultId, Box<[ValueId]>);
-        SpecConstantOp(TypeId, ResultId, u32, Box<[ValueId]>);
-
-        Function(TypeId, ResultId, desc::FunctionControl, TypeId);
-        FunctionParameter(TypeId, ResultId);
-        FunctionEnd();
-        FunctionCall(TypeId, ResultId, ValueId, Box<[ValueId]>);
-
-        Variable {
-            let ty = try!(p.parse::<TypeId>());
-            let res = try!(p.parse::<ResultId>());
-            let sc = try!(p.parse::<desc::StorageClass>());
-            let mut init = ValueId(0);
-            if p.has_words() {
-                init = try!(p.parse());
-            }
-
-            Instruction::Variable(ty, res, sc, init)
-        };
-        ImageTexelPointer(TypeId, ResultId, ValueId, ValueId, ValueId);
-        Load(TypeId, ResultId, ValueId, desc::MemoryAccess);
-        Store(ValueId, ValueId, desc::MemoryAccess);
-        CopyMemory(ValueId, ValueId, desc::MemoryAccess);
-        CopyMemorySized(ValueId, ValueId, ValueId, desc::MemoryAccess);
-        AccessChain(TypeId, ResultId, ValueId, Box<[ValueId]>);
-        InBoundsAccessChain(TypeId, ResultId, ValueId, Box<[ValueId]>);
-        PtrAccessChain(TypeId, ResultId, ValueId, ValueId, Box<[ValueId]>);
-        ArrayLength(TypeId, ResultId, ValueId, u32);
-        GenericPtrMemSemantics(TypeId, ResultId, ValueId);
-        InBoundsPtrAccessChain(TypeId, ResultId, ValueId, ValueId, Box<[ValueId]>);
-
-        Decorate(Id, instruction::Decoration);
-        MemberDecorate(TypeId, u32, instruction::Decoration);
-        DecorationGroup(ResultId);
-        GroupDecorate(ValueId, Box<[Id]>);
-        GroupMemberDecorate {
-            let group = try!(p.parse());
-            let mut pairs = Vec::with_capacity(p.remaining_words()/2);
-            while p.has_words() {
-                let id = try!(p.parse());
-                let n = try!(p.parse_word());
-                pairs.push((id, n));
-            }
-
-            Instruction::GroupMemberDecorate(group, pairs.into_boxed_slice())
-        };
-
-        VectorExtractDynamic(TypeId, ResultId, ValueId, ValueId);
-        VectorInsertDynamic(TypeId, ResultId, ValueId, ValueId, ValueId);
-        VectorShuffle(TypeId, ResultId, ValueId, ValueId, Box<[u32]>);
-        CompositeConstruct(TypeId, ResultId, Box<[ValueId]>);
-        CompositeExtract(TypeId, ResultId, ValueId, Box<[u32]>);
-        CompositeInsert(TypeId, ResultId, ValueId, ValueId, Box<[u32]>);
-        CopyObject(TypeId, ResultId, ValueId);
-        Transpose(TypeId, ResultId, ValueId);
-
-        NoLine();
-    });
-
-    Ok(inst)
-}
+include!(concat!(env!("OUT_DIR"), "/inst_parser.rs"));
 
 struct InstructionParser<'a> {
     params: &'a [u32]
@@ -463,6 +315,31 @@ impl ParamParse for instruction::Decoration {
         };
 
         Ok(decoration)
+    }
+}
+
+impl ParamParse for ImageOperands {
+    fn parse(p: &mut InstructionParser) -> Result<Self> {
+        const OPERANDS : [desc::ImageOperands; 8] = [
+            desc::ImgOpBias, desc::ImgOpLod, desc::ImgOpGrad,
+            desc::ImgOpConstOffset, desc::ImgOpOffset,
+            desc::ImgOpConstOffsets, desc::ImgOpSample,
+            desc::ImgOpMinLod
+        ];
+        let mut operands = ImageOperands::new();
+
+        if p.has_words() {
+            let ops = try!(p.parse::<desc::ImageOperands>());
+
+            for &o in OPERANDS.iter() {
+                if ops.contains(o) {
+                    let operand = try!(p.parse::<ValueId>());
+                    operands.set(o, operand);
+                }
+            }
+        }
+
+        Ok(operands)
     }
 }
 

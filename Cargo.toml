@@ -6,5 +6,6 @@ authors = ["James Miller <james@aatch.net>"]
 license = "Apache-2.0/MIT"
 readme = "README.md"
 keywords = ["spir-v", "spirv", "vulkan"]
+build = "build.rs"
 
 repository = "https://github.com/Aatch/spirv-rs"

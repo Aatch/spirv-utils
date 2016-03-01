@@ -1,0 +1,336 @@
+group Misc
+0   Nop
+1   Undef result-type result-id
+
+group Debug
+2   SourceContinued src:string
+3   Source src-lang file:value-id? src:string?
+4   SourceExtension extension:string
+5   Name id name:string
+6   MemberName type-id member:num name:string
+7   String result-id string
+8   Line file:value-id line:num col:num
+317 NoLine
+
+group Annotation
+71  Decorate target:id decoration
+72  MemberDecorate target:type-id member:num decoration
+73  DecorationGroup result-id
+74  GroupDecorate group:value-id targets:[id]
+75  GroupMemberDecorate group:value-id targets:[type-id num]
+
+group Extension
+10  Extension name:string
+11  ExtInstImport result-id name:string
+12  ExtInst result-type result-id set:value-id instruction:num operands:[id]
+
+group Mode
+14  MemoryModel addressing-model memory-model
+15  EntryPoint execution-model func:value-id name:string interface:[id]
+16  ExecutionMode execution-mode
+17  Capability capability
+
+group Type
+19  TypeVoid result-type
+20  TypeBool result-type
+21  TypeInt  result-type width:num signed:bool
+22  TypeFloat result-type width:num
+23  TypeVector result-type type-id len:num
+24  TypeMatrix result-type type-id cols:num
+25  TypeImage  result-type type-id dim depth:num arrayed:bool multisampled:bool sampled:num image-format access-qualifier?
+26  TypeSampler result-type
+27  TypeSampledImage result-type image:type-id
+28  TypeArray result-type element:type-id len:value-id
+29  TypeRuntimeArray result-type element:type-id
+30  TypeStruct result-type fields:[type-id]
+31  TypeOpaque result-type name:string
+32  TypePointer result-type storage-class pointee:type-id
+33  TypeFunction result-type return-ty:type-id params:[type-id]
+34  TypeEvent result-type
+35  TypeDeviceEvent result-type
+36  TypeReserveId result-type
+37  TypeQueue result-type
+38  TypePipe result-type
+39  TypeForwardPointer type-id storage-class
+
+group Constant
+41  ConstantTrue result-type result-id
+42  ConstantFalse result-type result-id
+43  Constant result-type result-id val:[num]
+44  ConstantComposite result-type result-id flds:[value-id]
+45  ConstantSampler result-type result-id sampler-addressing-mode normalized:bool sampler-filter-mode
+46  ConstantNull result-type result-id
+48  SpecConstantTrue result-type result-id
+49  SpecConstantFalse result-type result-id
+50  SpecConstant result-type result-id val:[num]
+51  SpecConstantComposite result-type result-id flds:[value-id]
+52  SpecConstantOp result-type result-id num operands:[value-id]
+
+group Memory
+59  Variable result-type result-id storage-class init:value-id?
+60  ImageTexelPointer result-type result-id image:value-id coord:value-id sample:value-id
+61  Load result-type result-id value-id memory-access
+62  Store ptr:value-id obj:value-id memory-access
+63  CopyMemory target:value-id src:value-id memory-access
+64  CopyMemorySized target:value-id src:value-id size:value-id memory-access
+65  AccessChain result-type result-id base:value-id indices:[value-id]
+66  InBoundsAccessChain result-type result-id base:value-id indices:[value-id]
+67  PtrAccessChain result-type result-id base:value-id element:value-id indices:[value-id]
+68  ArrayLength result-type result-id obj:value-id member:num
+69  GenericPtrMemSemantics result-type result-id ptr:value-id
+70  InBoundsPtrAccessChain result-type result-id base:value-id element:value-id indices:[value-id]
+
+group Function
+54  Function result-type result-id function-control fn-ty:type-id
+55  FunctionParameter result-type result-id
+56  FunctionEnd
+57  FunctionCall result-type result-id func:value-id args:[value-id]
+
+group Image
+86  SampledImage result-type result-id image:value-id sampler:value-id
+87  ImageSampleImplicitLod result-type result-id image:value-id coord:value-id image-operands?
+88  ImageSampleExplicitLod result-type result-id image:value-id coord:value-id image-operands
+89  ImageSampleDrefImplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands?
+90  ImageSampleDrefExplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands
+91  ImageSampleProjImplicitLod result-type result-id image:value-id coord:value-id image-operands?
+92  ImageSampleProjExplicitLod result-type result-id image:value-id coord:value-id image-operands
+93  ImageSampleProjDrefImplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands?
+94  ImageSampleProjDrefExplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands
+95  ImageFetch result-type result-id image:value-id coord:value-id image-operands?
+96  ImageGather result-type result-id image:value-id coord:value-id component:value-id image-operands?
+97  ImageDrefGather result-type result-id image:value-id coord:value-id d-ref:value-id image-operands?
+98  ImageRead result-type result-id image:value-id coord:value-id image-operands?
+99  ImageWrite image:value-id coord:value-id texel:value-id image-operands?
+100 Image result-type result-id image:value-id
+101 ImageQueryFormat result-type result-id image:value-id
+102 ImageQueryOrder result-type result-id image:value-id
+103 ImageQuerySizeLod result-type result-id image:value-id lod:value-id
+104 ImageQuerySize result-type result-id image:value-id
+105 ImageQueryLod result-type result-id image:value-id coord:value-id
+106 ImageQueryLevels result-type result-id image:value-id
+107 ImageQuerySamples result-type result-id image:value-id
+305 ImageSparseSampleImplicitLod result-type result-id image:value-id coord:value-id image-operands?
+306 ImageSparseSampleExplicitLod result-type result-id image:value-id coord:value-id image-operands
+307 ImageSparseSampleDrefImplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands?
+308 ImageSparseSampleDrefExplicitLod result-type result-id image:value-id coord:value-id d-ref:value-id image-operands
+313 ImageSparseFetch result-type result-id image:value-id coord:value-id image-operands?
+314 ImageSparseGather result-type result-id image:value-id coord:value-id component:value-id image-operands?
+315 ImageSparseDrefGather result-type result-id image:value-id coord:value-id d-ref:value-id image-operands?
+316 ImageSparseTexelsResident result-type result-id resident-code:value-id
+317 ImageSparseRead result-type result-id image:value-id coord:value-id image-operands?
+
+group Conversion
+109 ConvertFToU result-type result-id value-id
+110 ConvertFToS result-type result-id value-id
+111 ConvertSToF result-type result-id value-id
+112 ConvertUToF result-type result-id value-id
+113 UConvert result-type result-id value-id
+114 SConvert result-type result-id value-id
+115 FConvert result-type result-id value-id
+116 QuantizeToF16 result-type result-id value-id
+117 ConvertPtrToU result-type result-id value-id
+118 SatConvertSToU result-type result-id value-id
+119 SatConvertUToS result-type result-id value-id
+120 ConvertUToPtr result-type result-id value-id
+121 PtrCastToGeneric result-type result-id value-id
+122 GenericCastToPtr result-type result-id value-id
+123 GenericCastToPtrExplicit result-type result-id value-id storage-class
+124 Bitcast result-type result-id value-id
+
+group Composite
+77  VectorExtractDynamic result-type result-id vector:value-id index:value-id
+78  VectorInsertDynamic result-type result-id vector:value-id component:value-id index:value-id
+79  VectorShuffle result-type result-id vector-1:value-id vector-2:value-id components:[num]
+80  CompositeConstruct result-type result-id fields:[value-id]
+81  CompositeExtract result-type result-id obj:value-id indices:[num]
+82  CompositeInsert result-type result-id obj:value-id composite:value-id indices:[num]
+83  CopyObject result-type result-id value-id
+84  Transpose result-type result-id value-id
+
+group Arithmetic
+126 SNegate result-type result-id value-id
+127 FNegate result-type result-id value-id
+128 IAdd result-type result-id lhs:value-id rhs:value-id
+129 FAdd result-type result-id lhs:value-id rhs:value-id
+130 ISub result-type result-id lhs:value-id rhs:value-id
+131 FSub result-type result-id lhs:value-id rhs:value-id
+132 IMul result-type result-id lhs:value-id rhs:value-id
+133 FMul result-type result-id lhs:value-id rhs:value-id
+134 UDiv result-type result-id lhs:value-id rhs:value-id
+135 SDiv result-type result-id lhs:value-id rhs:value-id
+136 FDiv result-type result-id lhs:value-id rhs:value-id
+137 UMod result-type result-id lhs:value-id rhs:value-id
+138 SRem result-type result-id lhs:value-id rhs:value-id
+139 SMod result-type result-id lhs:value-id rhs:value-id
+140 FRem result-type result-id lhs:value-id rhs:value-id
+141 FMod result-type result-id lhs:value-id rhs:value-id
+142 VectorTimesScalar result-type result-id vector:value-id scalar:value-id
+143 MatrixTimesScalar result-type result-id matrix:value-id scalar:value-id
+144 VectorTimesMatrix result-type result-id vector:value-id matrix:value-id
+145 MatrixTimesVector result-type result-id matrix:value-id vector:value-id
+146 MatrixTimesMatrix result-type result-id lhs:value-id rhs:value-id
+147 OuterProduct result-type result-id lhs:value-id rhs:value-id
+148 Dot result-type result-id lhs:value-id rhs:value-id
+149 IAddCarry result-type result-id lhs:value-id rhs:value-id
+150 ISubBorrow result-type result-id lhs:value-id rhs:value-id
+151 UMulExtended result-type result-id lhs:value-id rhs:value-id
+152 SMulExtended result-type result-id lhs:value-id rhs:value-id
+
+group Bit
+194 ShiftRightLogical result-type result-id base:value-id shift:value-id
+195 ShiftRightArithmetic result-type result-id base:value-id shift:value-id
+196 ShiftLeftLogical result-type result-id base:value-id shift:value-id
+197 BitwiseOr result-type result-id lhs:value-id rhs:value-id
+198 BitwiseXor result-type result-id lhs:value-id rhs:value-id
+199 BitwiseAnd result-type result-id lhs:value-id rhs:value-id
+200 Not result-type result-id value-id
+201 BitFieldInsert result-type result-id base:value-id insert:value-id offset:value-id count:value-id
+202 BitFieldSExtract result-type result-id base:value-id offset:value-id count:value-id
+203 BitFieldUExtract result-type result-id base:value-id offset:value-id count:value-id
+204 BitReverse result-type result-id base:value-id
+205 BitCount result-type result-id base:value-id
+
+group Relational
+154 Any result-type result-id value-id
+155 All result-type result-id value-id
+156 IsNan result-type result-id value-id
+157 IsInf result-type result-id value-id
+158 IsFinite result-type result-id value-id
+159 IsNormal result-type result-id value-id
+160 SignBitSet result-type result-id value-id
+161 LessOrGreater result-type result-id x:value-id y:value-id
+162 Ordered result-type result-id x:value-id y:value-id
+163 Unordered result-type result-id x:value-id y:value-id
+164 LogicalEqual result-type result-id lhs:value-id rhs:value-id
+165 LogicalNotEqual result-type result-id lhs:value-id rhs:value-id
+166 LogicalOr result-type result-id lhs:value-id rhs:value-id
+167 LogicalAnd result-type result-id lhs:value-id rhs:value-id
+168 LogicalNot result-type result-id value-id
+169 Select result-type result-id condition:value-id obj-1:value-id obj-2:value-id
+170 IEqual result-type result-id lhs:value-id rhs:value-id
+171 INotEqual result-type result-id lhs:value-id rhs:value-id
+172 UGreaterThan result-type result-id lhs:value-id rhs:value-id
+173 SGreaterThan result-type result-id lhs:value-id rhs:value-id
+174 UGreaterThanEqual result-type result-id lhs:value-id rhs:value-id
+175 SGreaterThanEqual result-type result-id lhs:value-id rhs:value-id
+176 ULessThan result-type result-id lhs:value-id rhs:value-id
+177 SLessThan result-type result-id lhs:value-id rhs:value-id
+178 ULessThanEqual result-type result-id lhs:value-id rhs:value-id
+179 SLessThanEqual result-type result-id lhs:value-id rhs:value-id
+180 FOrdEqual result-type result-id lhs:value-id rhs:value-id
+181 FUnordEqual result-type result-id lhs:value-id rhs:value-id
+182 FOrdNotEqual result-type result-id lhs:value-id rhs:value-id
+183 FUnordNotEqual result-type result-id lhs:value-id rhs:value-id
+184 FOrdLessThan result-type result-id lhs:value-id rhs:value-id
+185 FUnordLessThan result-type result-id lhs:value-id rhs:value-id
+186 FOrdGreaterThan result-type result-id lhs:value-id rhs:value-id
+187 FUnordGreaterThan result-type result-id lhs:value-id rhs:value-id
+188 FOrdLessThanEqual result-type result-id lhs:value-id rhs:value-id
+189 FUnordLessThanEqual result-type result-id lhs:value-id rhs:value-id
+190 FOrdGreaterThanEqual result-type result-id lhs:value-id rhs:value-id
+191 FUnordGreaterThanEqual result-type result-id lhs:value-id rhs:value-id
+
+group Derivative
+207 DPdx result-type result-id p:value-id
+208 DPdy result-type result-id p:value-id
+209 Fwidth result-type result-id p:value-id
+210 DPdxFine result-type result-id p:value-id
+211 DPdyFine result-type result-id p:value-id
+212 FwidthFine result-type result-id p:value-id
+213 DPdxCoarse result-type result-id p:value-id
+214 DPdyCoarse result-type result-id p:value-id
+215 FwidthCoarse result-type result-id p:value-id
+
+group ControlFlow
+245 Phi result-type result-id values:[value-id value-id]
+246 LoopMerge merge:value-id cont:value-id loop-control
+247 SelectionMerge merge:value-id selection-control
+248 Label result-id
+249 Branch target:value-id
+250 BranchConditional cond:value-id then:value-id els:value-id true-weight:num? false-weight:num?
+# Switch requires knowing the type of selector to parse properly, so we don't
+251 Switch selector:value-id default:value-id targets:[num]
+252 Kill
+253 Return
+254 ReturnValue value-id
+255 Unreachable
+256 LifetimeStart ptr:value-id size:num
+257 LifetimeStop ptr:value-id size:num
+
+group Atomic
+227 AtomicLoad result-type result-id ptr:value-id scope:value-id semantics:value-id
+228 AtomicStore ptr:value-id scope:value-id semantics:value-id value-id
+229 AtomicExchange result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+230 AtomicCompareExchange result-type result-id ptr:value-id scope:value-id eq-semantics:value-id not-eq-semantics:value-id value-id comparator:value-id
+231 AtomicCompareExchangeWeak result-type result-id ptr:value-id scope:value-id eq-semantics:value-id not-eq-semantics:value-id value-id comparator:value-id
+232 AtomicIIncrement result-type result-id ptr:value-id scope:value-id semantics:value-id
+233 AtomicIDecrement result-type result-id ptr:value-id scope:value-id semantics:value-id
+234 AtomicIAdd result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+235 AtomicISub result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+236 AtomicSMin result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+237 AtomicUMin result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+238 AtomicSMax result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+239 AtomicUMax result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+240 AtomicAnd result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+241 AtomicOr result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+242 AtomicXor result-type result-id ptr:value-id scope:value-id semantics:value-id value-id
+318 AtomicFlagTestAndSet result-type result-id ptr:value-id scope:value-id semantics:value-id
+319 AtomicFlagClear ptr:value-id scope:value-id semantics:value-id
+
+group Primitive
+218 EmitVertex
+219 EndPrimitive
+220 EmitStreamVertex stream:value-id
+221 EndStreamPrimitive stream:value-id
+
+group Barrier
+224 ControlBarrier execution:value-id memory:value-id semantics:value-id
+225 MemoryBarrier memory:value-id semantics:value-id
+
+group Group
+259 GroupAsyncCopy result-type result-id execution:value-id dest:value-id src:value-id num-elements:value-id stride:value-id event:value-id
+260 GroupWaitEvents execution:value-id num-events:value-id events:value-id
+261 GroupAll result-type result-id execution:value-id predicate:value-id
+262 GroupAny result-type result-id execution:value-id predicate:value-id
+263 GroupBroadcast result-type result-id execution:value-id value:value-id local-id:value-id
+264 GroupIAdd result-type result-id execution:value-id group-operation x:value-id
+265 GroupFAdd result-type result-id execution:value-id group-operation x:value-id
+266 GroupFMin result-type result-id execution:value-id group-operation x:value-id
+267 GroupUMin result-type result-id execution:value-id group-operation x:value-id
+268 GroupSMin result-type result-id execution:value-id group-operation x:value-id
+269 GroupFMax result-type result-id execution:value-id group-operation x:value-id
+270 GroupUMax result-type result-id execution:value-id group-operation x:value-id
+271 GroupSMax result-type result-id execution:value-id group-operation x:value-id
+
+group Enqueue
+291 EnqueueMarker result-type result-id queue:value-id num-events:value-id wait-events:value-id ret-event:value-id
+292 EnqueueKernel result-type result-id queue:value-id flags:value-id range:value-id num-events:value-id wait-event:value-id ret-event:value-id invoke:value-id param:value-id param-size:value-id param-align:value-id local-size:[value-id]
+293 GetKernelNDrangeSubGroupCount result-type result-id range:value-id invoke:value-id param:value-id param-size:value-id param-align:value-id
+294 GetKernelNDrangeMaxSubGroupSize result-type result-id range:value-id invoke:value-id param:value-id param-size:value-id param-align:value-id
+295 GetKernelWorkGroupSize result-type result-id invoke:value-id param:value-id param-size:value-id param-align:value-id
+296 GetKernelPreferredWorkGroupSizeMultiple result-type result-id invoke:value-id param:value-id param-size:value-id param-align:value-id
+297 RetainEvent event:value-id
+298 ReleaseEvent event:value-id
+299 CreateUserEvent result-type result-id
+300 IsValidEvent result-type result-id event:value-id
+301 SetUserEventStatus event:value-id status:value-id
+302 CaptureEventProfilingInfo event:value-id profiling-info:value-id value:value-id
+303 GetDefaultQueue result-type result-id
+304 BuildNDRange result-type result-id global-work-size:value-id local-work-size:value-id global-work-offset:value-id
+
+group Pipe
+274 ReadPipe result-type result-id pipe:value-id ptr:value-id packet-size:value-id packet-alignment:value-id
+275 WritePipe result-type result-id pipe:value-id ptr:value-id packet-size:value-id packet-alignment:value-id
+276 ReservedReadPipe result-type result-id pipe:value-id reserve-id:value-id index:value-id ptr:value-id packet-size:value-id packet-alignment:value-id
+277 ReservedWritePipe result-type result-id pipe:value-id reserve-id:value-id index:value-id ptr:value-id packet-size:value-id packet-alignment:value-id
+278 ReserveReadPipePackets result-type result-id pipe:value-id num-packets:value-id packet-size:value-id packet-alignment:value-id
+279 ReserveWritePipePackets result-type result-id pipe:value-id num-packets:value-id packet-size:value-id packet-alignment:value-id
+280 CommitReadPipe pipe:value-id reserve-id:value-id packet-size:value-id packet-alignment:value-id
+281 CommitWritePipe pipe:value-id reserve-id:value-id packet-size:value-id packet-alignment:value-id
+282 IsValidReserveId result-type result-id reserve-id:value-id
+283 GetNumPipePackets result-type result-id pipe:value-id packet-size:value-id packet-alignment:value-id
+284 GetMaxPipePackets result-type result-id pipe:value-id packet-size:value-id packet-alignment:value-id
+285 GroupReserveReadPipePackets result-type result-id execution:value-id pipe:value-id num-packets:value-id packet-size:value-id packet-alignment:value-id
+286 GroupReserveWritePipePackets result-type result-id execution:value-id pipe:value-id num-packets:value-id packet-size:value-id packet-alignment:value-id
+287 GroupCommitReadPipe execution:value-id pipe:value-id reserve-id:value-id packet-size:value-id packet-alignment:value-id
+288 GroupCommitWritePipe execution:value-id pipe:value-id reserve-id:value-id packet-size:value-id packet-alignment:value-id
