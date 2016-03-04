@@ -6,59 +6,89 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+extern crate lalrpop_util;
+
 use std::borrow::{Cow};
 use std::env;
 use std::fs::File;
 use std::io::{Result, BufRead, BufReader, Read, Write};
 use std::path::Path;
 
+use lalrpop_util::ParseError;
+
 pub mod util {
     pub mod codegen;
-    pub mod line_parser;
+    pub mod parser;
 }
 
 use util::codegen::CodeFile;
-use util::line_parser::LineParser;
+use util::parser::parse_Description;
+
+#[derive(Debug)]
+pub struct Group {
+    name: String,
+    instructions: Vec<Instruction>
+}
+
+#[derive(Debug)]
+pub struct Instruction {
+    opcode: u16,
+    name: String,
+    params: Vec<Param>,
+    group: Option<String>
+}
+
+#[derive(Debug)]
+pub struct Param {
+    name: String,
+    ty: ParamTy,
+}
+
+#[derive(Debug)]
+pub enum ParamTy {
+    Single(Ty, bool),
+    Repeat(Ty),
+    RepeatMany(Vec<Ty>)
+}
 
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
     println!("cargo:rerun-if-changed=desc/core.desc");
+    println!("cargo:rerun-if-changed=util/parser.rs");
 
     let dest = env::var("OUT_DIR").unwrap();
     let dest = Path::new(&dest);
 
-    let input = File::open("desc/core.desc").unwrap();
-    let mut input = BufReader::new(input);
+    let mut input = File::open("desc/core.desc").unwrap();
 
-    let mut cur_group = None;
+    let mut buf = String::new();
+    input.read_to_string(&mut buf);
 
-    let mut instructions = Vec::new();
+    let instructions = parse_Description(&buf);
 
-    for line in input.lines() {
-        let line = line.unwrap();
-        let line : &str = line.trim_right();
-        if line == "" { continue; }
+    match instructions {
+        Ok(instructions) => {
+            let instructions : Vec<_> = instructions.into_iter().flat_map(|group| {
+                let name = group.name;
+                group.instructions.into_iter().map(move |mut i| {
+                    i.group = Some(name.clone());
+                    i
+                })
+            }).collect();
 
-        if line.starts_with("#") {
-            // Skip comments
-            continue;
-        } else if line.starts_with("group") {
-            let group_name = &line[5..];
-            let group_name = group_name.trim();
-            cur_group = Some(group_name.to_owned());
-        } else {
-            let mut inst = parse_line(line);
-            inst.group = cur_group.clone();
+            let insts_output = CodeFile::create(&dest.join("insts.rs"));
+            gen_insts(&instructions, insts_output).unwrap();
 
-            instructions.push(inst);
+            let parser_output = CodeFile::create(&dest.join("inst_parser.rs"));
+            gen_parser(&instructions, parser_output).unwrap();
+        }
+        Err(e) => {
+            let mut stderr = std::io::stderr();
+
+            let _ = writeln!(stderr, "Error parsing core.desc: {:?}", e);
+            std::process::exit(1);
         }
     }
-
-    let insts_output = CodeFile::create(&dest.join("insts.rs"));
-    gen_insts(&instructions, insts_output).unwrap();
-
-    let parser_output = CodeFile::create(&dest.join("inst_parser.rs"));
-    gen_parser(&instructions, parser_output).unwrap();
 }
 
 fn gen_insts(insts: &[Instruction], mut dest: CodeFile) -> Result<()> {
@@ -366,29 +396,8 @@ fn normalize_name<'a>(s: &'a str) -> Cow<'a, str> {
     }
 }
 
-#[derive(Debug)]
-struct Instruction {
-    op: u16,
-    name: String,
-    params: Vec<Param>,
-    group: Option<String>,
-}
-
-#[derive(Debug)]
-struct Param {
-    name: String,
-    ty: ParamTy,
-}
-
-#[derive(Debug)]
-enum ParamTy {
-    Single(Ty, bool),
-    Repeat(Ty),
-    RepeatMany(Vec<Ty>)
-}
-
 #[derive(Copy, Clone, Debug)]
-enum Ty {
+pub enum Ty {
     Id,
     ResultType,
     ResultId,
@@ -557,71 +566,4 @@ impl ParamTy {
             }
         }
     }
-}
-
-fn parse_line(line: &str) -> Instruction {
-    let mut line = LineParser::new(line);
-
-    let op = line.parse_number().expect("Couldn't parse opcode");
-    let name = line.parse_word().expect("Couldn't parse instruction name");
-
-    let mut params = Vec::new();
-
-    line.skip_whitespace();
-
-    while !line.is_eol() {
-        let param = parse_param(&mut line);
-        params.push(param);
-        line.skip_whitespace();
-    }
-
-    Instruction {
-        op: op,
-        name: name.to_owned(),
-        params: params,
-        group: None
-    }
-}
-
-fn parse_param(line: &mut LineParser) -> Param {
-    let name = line.parse_word().expect("Couldn't parse param name");
-
-    let ty = if line.eat(':') {
-        parse_type(line)
-    } else {
-        let optional = line.eat('?');
-        let ty = Ty::from_str(name).expect(&format!("Invalid type `{}`", name));
-        ParamTy::Single(ty, optional)
-    };
-
-    Param {
-        name: name.to_owned(),
-        ty: ty
-    }
-}
-
-fn parse_type(line: &mut LineParser) -> ParamTy {
-    if line.eat('[') {
-        let ty = line.parse_word().expect("Couldn't parse type");
-        let ty = Ty::from_str(ty).expect(&format!("Invalid type `{}`", ty));
-
-        line.skip_whitespace();
-        if line.eat(']') {
-            return ParamTy::Repeat(ty);
-        } else {
-            let mut tys = vec![ty];
-            while !line.eat(']') {
-                let ty = line.parse_word().expect("Couldn't parse type");
-                let ty = Ty::from_str(ty).expect(&format!("Invalid type `{}`", ty));
-                tys.push(ty);
-            }
-
-            return ParamTy::RepeatMany(tys);
-        }
-    }
-
-    let ty = line.parse_word().expect("Couldn't parse type");
-    let ty = Ty::from_str(ty).expect(&format!("Invalid type `{}`", ty));
-    let optional = line.eat('?');
-    ParamTy::Single(ty, optional)
 }

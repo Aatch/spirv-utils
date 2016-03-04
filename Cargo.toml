@@ -9,3 +9,6 @@ keywords = ["spir-v", "spirv", "vulkan"]
 build = "build.rs"
 
 repository = "https://github.com/Aatch/spirv-rs"
+
+[build-dependencies]
+lalrpop-util = "0.11"
