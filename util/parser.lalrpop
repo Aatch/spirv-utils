@@ -1,0 +1,60 @@
+use Group;
+use Instruction;
+use Param;
+use ParamTy;
+use Ty;
+use std::str::FromStr;
+
+grammar["LALR(1)"];
+
+pub Description : Vec<Group> = <Group*>;
+
+Group : Group =
+    "group" <name:Id> ";" <is:Instruction*> => {
+        Group {
+            name: name,
+            instructions: is
+        }
+    };
+
+Instruction : Instruction =
+    <op:OpCode> <name:Id> <params:Param*> ";" => {
+        Instruction {
+            opcode: op,
+            name: name,
+            params: params,
+            group: None
+        }
+    };
+
+Param : Param = {
+    <name:Name> <opt:"?"?> => {
+        Param {
+            ty: ParamTy::Single(Ty::from_str(&name).unwrap(), opt.is_some()),
+            name: name,
+        }
+    },
+    <name:Name> ":" <ty:ParamTy> => {
+        Param {
+            name: name,
+            ty:ty
+        }
+    }
+};
+
+ParamTy : ParamTy = {
+    "[" <ty:Ty> "]" => ParamTy::Repeat(ty),
+    "[" <ty:Ty> <tys:Ty+> "]" => ParamTy::RepeatMany(Some(ty).into_iter().chain(tys.into_iter()).collect()),
+    <ty:Ty> <opt:"?"?> => ParamTy::Single(ty, opt.is_some()),
+};
+
+Ty: Ty = Id => Ty::from_str(&<>).unwrap();
+
+#[inline]
+Name : String = {
+    "group" => "group".to_owned(),
+    Id
+};
+
+Id : String = r"[A-Za-z_][A-Za-z0-9_-]*" => (<>).to_owned();
+OpCode : u16 = r"[0-9]+" => u16::from_str(<>).unwrap();
