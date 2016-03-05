@@ -6,6 +6,10 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+extern crate typed_arena;
+
 pub mod desc;
 pub mod instruction;
 pub mod parse;
+
+pub mod ty;
