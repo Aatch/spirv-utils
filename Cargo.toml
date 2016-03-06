@@ -1,14 +1,15 @@
 [package]
 name = "spirv-utils"
 description = "SPIR-V Utilities library"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["James Miller <james@aatch.net>"]
 license = "Apache-2.0/MIT"
 readme = "README.md"
 keywords = ["spir-v", "spirv", "vulkan"]
 build = "build.rs"
 
-repository = "https://github.com/Aatch/spirv-rs"
+repository = "https://github.com/Aatch/spirv-utils"
+documentation = "https://aatch.github.io/spirv-utils"
 
 [build-dependencies]
 lalrpop-util = "0.11"
