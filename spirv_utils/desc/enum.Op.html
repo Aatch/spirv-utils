@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Op` enum in crate `spirv_utils`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Op">
+
+    <title>spirv_utils::desc::Op - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>spirv_utils</a>::<wbr><a href='index.html'>desc</a></p><script>window.sidebarCurrent = {name: 'Op', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>spirv_utils</a>::<wbr><a href='index.html'>desc</a>::<wbr><a class='enum' href=''>Op</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-2017' class='srclink' href='../../src/spirv_utils/desc.rs.html#114-116' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Op {
+    Nop,
+    Undef,
+    SourceContinued,
+    Source,
+    SourceExtension,
+    Name,
+    MemberName,
+    String,
+    Line,
+    Extension,
+    ExtInstImport,
+    ExtInst,
+    MemoryModel,
+    EntryPoint,
+    ExecutionMode,
+    Capability,
+    TypeVoid,
+    TypeBool,
+    TypeInt,
+    TypeFloat,
+    TypeVector,
+    TypeMatrix,
+    TypeImage,
+    TypeSampler,
+    TypeSampledImage,
+    TypeArray,
+    TypeRuntimeArray,
+    TypeStruct,
+    TypeOpaque,
+    TypePointer,
+    TypeFunction,
+    TypeEvent,
+    TypeDeviceEvent,
+    TypeReserveId,
+    TypeQueue,
+    TypePipe,
+    TypeForwardPointer,
+    ConstantTrue,
+    ConstantFalse,
+    Constant,
+    ConstantComposite,
+    ConstantSampler,
+    ConstantNull,
+    SpecConstantTrue,
+    SpecConstantFalse,
+    SpecConstant,
+    SpecConstantComposite,
+    SpecConstantOp,
+    Function,
+    FunctionParameter,
+    FunctionEnd,
+    FunctionCall,
+    Variable,
+    ImageTexelPointer,
+    Load,
+    Store,
+    CopyMemory,
+    CopyMemorySized,
+    AccessChain,
+    InBoundsAccessChain,
+    PtrAccessChain,
+    ArrayLength,
+    GenericPtrMemSemantics,
+    InBoundsPtrAccessChain,
+    Decorate,
+    MemberDecorate,
+    DecorationGroup,
+    GroupDecorate,
+    GroupMemberDecorate,
+    VectorExtractDynamic,
+    VectorInsertDynamic,
+    VectorShuffle,
+    CompositeConstruct,
+    CompositeExtract,
+    CompositeInsert,
+    CopyObject,
+    Transpose,
+    SampledImage,
+    ImageSampleImplicitLod,
+    ImageSampleExplicitLod,
+    ImageSampleDrefImplicitLod,
+    ImageSampleDrefExplicitLod,
+    ImageSampleProjImplicitLod,
+    ImageSampleProjExplicitLod,
+    ImageSampleProjDrefImplicitLod,
+    ImageSampleProjDrefExplicitLod,
+    ImageFetch,
+    ImageGather,
+    ImageDrefGather,
+    ImageRead,
+    ImageWrite,
+    Image,
+    ImageQueryFormat,
+    ImageQueryOrder,
+    ImageQuerySizeLod,
+    ImageQuerySize,
+    ImageQueryLod,
+    ImageQueryLevels,
+    ImageQuerySamples,
+    ConvertFToU,
+    ConvertFToS,
+    ConvertSToF,
+    ConvertUToF,
+    UConvert,
+    SConvert,
+    FConvert,
+    QuantizeToF16,
+    ConvertPtrToU,
+    SatConvertSToU,
+    SatConvertUToS,
+    ConvertUToPtr,
+    PtrCastToGeneric,
+    GenericCastToPtr,
+    GenericCastToPtrExplicit,
+    Bitcast,
+    SNegate,
+    FNegate,
+    IAdd,
+    FAdd,
+    ISub,
+    FSub,
+    IMul,
+    FMul,
+    UDiv,
+    SDiv,
+    FDiv,
+    UMod,
+    SRem,
+    SMod,
+    FRem,
+    FMod,
+    VectorTimesScalar,
+    MatrixTimesScalar,
+    VectorTimesMatrix,
+    MatrixTimesVector,
+    MatrixTimesMatrix,
+    OuterProduct,
+    Dot,
+    IAddCarry,
+    ISubBorrow,
+    UMulExtended,
+    SMulExtended,
+    Any,
+    All,
+    IsNan,
+    IsInf,
+    IsFinite,
+    IsNormal,
+    SignBitSet,
+    LessOrGreater,
+    Ordered,
+    Unordered,
+    LogicalEqual,
+    LogicalNotEqual,
+    LogicalOr,
+    LogicalAnd,
+    LogicalNot,
+    Select,
+    IEqual,
+    INotEqual,
+    UGreaterThan,
+    SGreaterThan,
+    UGreaterThanEqual,
+    SGreaterThanEqual,
+    ULessThan,
+    SLessThan,
+    ULessThanEqual,
+    SLessThanEqual,
+    FOrdEqual,
+    FUnordEqual,
+    FOrdNotEqual,
+    FUnordNotEqual,
+    FOrdLessThan,
+    FUnordLessThan,
+    FOrdGreaterThan,
+    FUnordGreaterThan,
+    FOrdLessThanEqual,
+    FUnordLessThanEqual,
+    FOrdGreaterThanEqual,
+    FUnordGreaterThanEqual,
+    ShiftRightLogical,
+    ShiftRightArithmetic,
+    ShiftLeftLogical,
+    BitwiseOr,
+    BitwiseXor,
+    BitwiseAnd,
+    Not,
+    BitFieldInsert,
+    BitFieldSExtract,
+    BitFieldUExtract,
+    BitReverse,
+    BitCount,
+    DPdx,
+    DPdy,
+    Fwidth,
+    DPdxFine,
+    DPdyFine,
+    FwidthFine,
+    DPdxCoarse,
+    DPdyCoarse,
+    FwidthCoarse,
+    EmitVertex,
+    EndPrimitive,
+    EmitStreamVertex,
+    EndStreamPrimitive,
+    ControlBarrier,
+    MemoryBarrier,
+    AtomicLoad,
+    AtomicStore,
+    AtomicExchange,
+    AtomicCompareExchange,
+    AtomicCompareExchangeWeak,
+    AtomicIIncrement,
+    AtomicIDecrement,
+    AtomicIAdd,
+    AtomicISub,
+    AtomicSMin,
+    AtomicUMin,
+    AtomicSMax,
+    AtomicUMax,
+    AtomicAnd,
+    AtomicOr,
+    AtomicXor,
+    Phi,
+    LoopMerge,
+    SelectionMerge,
+    Label,
+    Branch,
+    BranchConditional,
+    Switch,
+    Kill,
+    Return,
+    ReturnValue,
+    Unreachable,
+    LifetimeStart,
+    LifetimeStop,
+    GroupAsyncCopy,
+    GroupWaitEvents,
+    GroupAll,
+    GroupAny,
+    GroupBroadcast,
+    GroupIAdd,
+    GroupFAdd,
+    GroupFMin,
+    GroupUMin,
+    GroupSMin,
+    GroupFMax,
+    GroupUMax,
+    GroupSMax,
+    ReadPipe,
+    WritePipe,
+    ReservedReadPipe,
+    ReservedWritePipe,
+    ReserveReadPipePackets,
+    ReserveWritePipePackets,
+    CommitReadPipe,
+    CommitWritePipe,
+    IsValidReserveId,
+    GetNumPipePackets,
+    GetMaxPipePackets,
+    GroupReserveReadPipePackets,
+    GroupReserveWritePipePackets,
+    GroupCommitReadPipe,
+    GroupCommitWritePipe,
+    EnqueueMarker,
+    EnqueueKernel,
+    GetKernelNDrangeSubGroupCount,
+    GetKernelNDrangeMaxSubGroupSize,
+    GetKernelWorkGroupSize,
+    GetKernelPreferredWorkGroupSizeMultiple,
+    RetainEvent,
+    ReleaseEvent,
+    CreateUserEvent,
+    IsValidEvent,
+    SetUserEventStatus,
+    CaptureEventProfilingInfo,
+    GetDefaultQueue,
+    BuildNDRange,
+    ImageSparseSampleImplicitLod,
+    ImageSparseSampleExplicitLod,
+    ImageSparseSampleDrefImplicitLod,
+    ImageSparseSampleDrefExplicitLod,
+    ImageSparseSampleProjImplicitLod,
+    ImageSparseSampleProjExplicitLod,
+    ImageSparseSampleProjDrefImplicitLod,
+    ImageSparseSampleProjDrefExplicitLod,
+    ImageSparseFetch,
+    ImageSparseGather,
+    ImageSparseDrefGather,
+    ImageSparseTexelsResident,
+    NoLine,
+    AtomicFlagTestAndSet,
+    AtomicFlagClear,
+    ImageSparseRead,
+}</pre><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Nop'><code>Nop</code></td><td></td></tr><tr><td id='variant.Undef'><code>Undef</code></td><td></td></tr><tr><td id='variant.SourceContinued'><code>SourceContinued</code></td><td></td></tr><tr><td id='variant.Source'><code>Source</code></td><td></td></tr><tr><td id='variant.SourceExtension'><code>SourceExtension</code></td><td></td></tr><tr><td id='variant.Name'><code>Name</code></td><td></td></tr><tr><td id='variant.MemberName'><code>MemberName</code></td><td></td></tr><tr><td id='variant.String'><code>String</code></td><td></td></tr><tr><td id='variant.Line'><code>Line</code></td><td></td></tr><tr><td id='variant.Extension'><code>Extension</code></td><td></td></tr><tr><td id='variant.ExtInstImport'><code>ExtInstImport</code></td><td></td></tr><tr><td id='variant.ExtInst'><code>ExtInst</code></td><td></td></tr><tr><td id='variant.MemoryModel'><code>MemoryModel</code></td><td></td></tr><tr><td id='variant.EntryPoint'><code>EntryPoint</code></td><td></td></tr><tr><td id='variant.ExecutionMode'><code>ExecutionMode</code></td><td></td></tr><tr><td id='variant.Capability'><code>Capability</code></td><td></td></tr><tr><td id='variant.TypeVoid'><code>TypeVoid</code></td><td></td></tr><tr><td id='variant.TypeBool'><code>TypeBool</code></td><td></td></tr><tr><td id='variant.TypeInt'><code>TypeInt</code></td><td></td></tr><tr><td id='variant.TypeFloat'><code>TypeFloat</code></td><td></td></tr><tr><td id='variant.TypeVector'><code>TypeVector</code></td><td></td></tr><tr><td id='variant.TypeMatrix'><code>TypeMatrix</code></td><td></td></tr><tr><td id='variant.TypeImage'><code>TypeImage</code></td><td></td></tr><tr><td id='variant.TypeSampler'><code>TypeSampler</code></td><td></td></tr><tr><td id='variant.TypeSampledImage'><code>TypeSampledImage</code></td><td></td></tr><tr><td id='variant.TypeArray'><code>TypeArray</code></td><td></td></tr><tr><td id='variant.TypeRuntimeArray'><code>TypeRuntimeArray</code></td><td></td></tr><tr><td id='variant.TypeStruct'><code>TypeStruct</code></td><td></td></tr><tr><td id='variant.TypeOpaque'><code>TypeOpaque</code></td><td></td></tr><tr><td id='variant.TypePointer'><code>TypePointer</code></td><td></td></tr><tr><td id='variant.TypeFunction'><code>TypeFunction</code></td><td></td></tr><tr><td id='variant.TypeEvent'><code>TypeEvent</code></td><td></td></tr><tr><td id='variant.TypeDeviceEvent'><code>TypeDeviceEvent</code></td><td></td></tr><tr><td id='variant.TypeReserveId'><code>TypeReserveId</code></td><td></td></tr><tr><td id='variant.TypeQueue'><code>TypeQueue</code></td><td></td></tr><tr><td id='variant.TypePipe'><code>TypePipe</code></td><td></td></tr><tr><td id='variant.TypeForwardPointer'><code>TypeForwardPointer</code></td><td></td></tr><tr><td id='variant.ConstantTrue'><code>ConstantTrue</code></td><td></td></tr><tr><td id='variant.ConstantFalse'><code>ConstantFalse</code></td><td></td></tr><tr><td id='variant.Constant'><code>Constant</code></td><td></td></tr><tr><td id='variant.ConstantComposite'><code>ConstantComposite</code></td><td></td></tr><tr><td id='variant.ConstantSampler'><code>ConstantSampler</code></td><td></td></tr><tr><td id='variant.ConstantNull'><code>ConstantNull</code></td><td></td></tr><tr><td id='variant.SpecConstantTrue'><code>SpecConstantTrue</code></td><td></td></tr><tr><td id='variant.SpecConstantFalse'><code>SpecConstantFalse</code></td><td></td></tr><tr><td id='variant.SpecConstant'><code>SpecConstant</code></td><td></td></tr><tr><td id='variant.SpecConstantComposite'><code>SpecConstantComposite</code></td><td></td></tr><tr><td id='variant.SpecConstantOp'><code>SpecConstantOp</code></td><td></td></tr><tr><td id='variant.Function'><code>Function</code></td><td></td></tr><tr><td id='variant.FunctionParameter'><code>FunctionParameter</code></td><td></td></tr><tr><td id='variant.FunctionEnd'><code>FunctionEnd</code></td><td></td></tr><tr><td id='variant.FunctionCall'><code>FunctionCall</code></td><td></td></tr><tr><td id='variant.Variable'><code>Variable</code></td><td></td></tr><tr><td id='variant.ImageTexelPointer'><code>ImageTexelPointer</code></td><td></td></tr><tr><td id='variant.Load'><code>Load</code></td><td></td></tr><tr><td id='variant.Store'><code>Store</code></td><td></td></tr><tr><td id='variant.CopyMemory'><code>CopyMemory</code></td><td></td></tr><tr><td id='variant.CopyMemorySized'><code>CopyMemorySized</code></td><td></td></tr><tr><td id='variant.AccessChain'><code>AccessChain</code></td><td></td></tr><tr><td id='variant.InBoundsAccessChain'><code>InBoundsAccessChain</code></td><td></td></tr><tr><td id='variant.PtrAccessChain'><code>PtrAccessChain</code></td><td></td></tr><tr><td id='variant.ArrayLength'><code>ArrayLength</code></td><td></td></tr><tr><td id='variant.GenericPtrMemSemantics'><code>GenericPtrMemSemantics</code></td><td></td></tr><tr><td id='variant.InBoundsPtrAccessChain'><code>InBoundsPtrAccessChain</code></td><td></td></tr><tr><td id='variant.Decorate'><code>Decorate</code></td><td></td></tr><tr><td id='variant.MemberDecorate'><code>MemberDecorate</code></td><td></td></tr><tr><td id='variant.DecorationGroup'><code>DecorationGroup</code></td><td></td></tr><tr><td id='variant.GroupDecorate'><code>GroupDecorate</code></td><td></td></tr><tr><td id='variant.GroupMemberDecorate'><code>GroupMemberDecorate</code></td><td></td></tr><tr><td id='variant.VectorExtractDynamic'><code>VectorExtractDynamic</code></td><td></td></tr><tr><td id='variant.VectorInsertDynamic'><code>VectorInsertDynamic</code></td><td></td></tr><tr><td id='variant.VectorShuffle'><code>VectorShuffle</code></td><td></td></tr><tr><td id='variant.CompositeConstruct'><code>CompositeConstruct</code></td><td></td></tr><tr><td id='variant.CompositeExtract'><code>CompositeExtract</code></td><td></td></tr><tr><td id='variant.CompositeInsert'><code>CompositeInsert</code></td><td></td></tr><tr><td id='variant.CopyObject'><code>CopyObject</code></td><td></td></tr><tr><td id='variant.Transpose'><code>Transpose</code></td><td></td></tr><tr><td id='variant.SampledImage'><code>SampledImage</code></td><td></td></tr><tr><td id='variant.ImageSampleImplicitLod'><code>ImageSampleImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleExplicitLod'><code>ImageSampleExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleDrefImplicitLod'><code>ImageSampleDrefImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleDrefExplicitLod'><code>ImageSampleDrefExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleProjImplicitLod'><code>ImageSampleProjImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleProjExplicitLod'><code>ImageSampleProjExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleProjDrefImplicitLod'><code>ImageSampleProjDrefImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSampleProjDrefExplicitLod'><code>ImageSampleProjDrefExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageFetch'><code>ImageFetch</code></td><td></td></tr><tr><td id='variant.ImageGather'><code>ImageGather</code></td><td></td></tr><tr><td id='variant.ImageDrefGather'><code>ImageDrefGather</code></td><td></td></tr><tr><td id='variant.ImageRead'><code>ImageRead</code></td><td></td></tr><tr><td id='variant.ImageWrite'><code>ImageWrite</code></td><td></td></tr><tr><td id='variant.Image'><code>Image</code></td><td></td></tr><tr><td id='variant.ImageQueryFormat'><code>ImageQueryFormat</code></td><td></td></tr><tr><td id='variant.ImageQueryOrder'><code>ImageQueryOrder</code></td><td></td></tr><tr><td id='variant.ImageQuerySizeLod'><code>ImageQuerySizeLod</code></td><td></td></tr><tr><td id='variant.ImageQuerySize'><code>ImageQuerySize</code></td><td></td></tr><tr><td id='variant.ImageQueryLod'><code>ImageQueryLod</code></td><td></td></tr><tr><td id='variant.ImageQueryLevels'><code>ImageQueryLevels</code></td><td></td></tr><tr><td id='variant.ImageQuerySamples'><code>ImageQuerySamples</code></td><td></td></tr><tr><td id='variant.ConvertFToU'><code>ConvertFToU</code></td><td></td></tr><tr><td id='variant.ConvertFToS'><code>ConvertFToS</code></td><td></td></tr><tr><td id='variant.ConvertSToF'><code>ConvertSToF</code></td><td></td></tr><tr><td id='variant.ConvertUToF'><code>ConvertUToF</code></td><td></td></tr><tr><td id='variant.UConvert'><code>UConvert</code></td><td></td></tr><tr><td id='variant.SConvert'><code>SConvert</code></td><td></td></tr><tr><td id='variant.FConvert'><code>FConvert</code></td><td></td></tr><tr><td id='variant.QuantizeToF16'><code>QuantizeToF16</code></td><td></td></tr><tr><td id='variant.ConvertPtrToU'><code>ConvertPtrToU</code></td><td></td></tr><tr><td id='variant.SatConvertSToU'><code>SatConvertSToU</code></td><td></td></tr><tr><td id='variant.SatConvertUToS'><code>SatConvertUToS</code></td><td></td></tr><tr><td id='variant.ConvertUToPtr'><code>ConvertUToPtr</code></td><td></td></tr><tr><td id='variant.PtrCastToGeneric'><code>PtrCastToGeneric</code></td><td></td></tr><tr><td id='variant.GenericCastToPtr'><code>GenericCastToPtr</code></td><td></td></tr><tr><td id='variant.GenericCastToPtrExplicit'><code>GenericCastToPtrExplicit</code></td><td></td></tr><tr><td id='variant.Bitcast'><code>Bitcast</code></td><td></td></tr><tr><td id='variant.SNegate'><code>SNegate</code></td><td></td></tr><tr><td id='variant.FNegate'><code>FNegate</code></td><td></td></tr><tr><td id='variant.IAdd'><code>IAdd</code></td><td></td></tr><tr><td id='variant.FAdd'><code>FAdd</code></td><td></td></tr><tr><td id='variant.ISub'><code>ISub</code></td><td></td></tr><tr><td id='variant.FSub'><code>FSub</code></td><td></td></tr><tr><td id='variant.IMul'><code>IMul</code></td><td></td></tr><tr><td id='variant.FMul'><code>FMul</code></td><td></td></tr><tr><td id='variant.UDiv'><code>UDiv</code></td><td></td></tr><tr><td id='variant.SDiv'><code>SDiv</code></td><td></td></tr><tr><td id='variant.FDiv'><code>FDiv</code></td><td></td></tr><tr><td id='variant.UMod'><code>UMod</code></td><td></td></tr><tr><td id='variant.SRem'><code>SRem</code></td><td></td></tr><tr><td id='variant.SMod'><code>SMod</code></td><td></td></tr><tr><td id='variant.FRem'><code>FRem</code></td><td></td></tr><tr><td id='variant.FMod'><code>FMod</code></td><td></td></tr><tr><td id='variant.VectorTimesScalar'><code>VectorTimesScalar</code></td><td></td></tr><tr><td id='variant.MatrixTimesScalar'><code>MatrixTimesScalar</code></td><td></td></tr><tr><td id='variant.VectorTimesMatrix'><code>VectorTimesMatrix</code></td><td></td></tr><tr><td id='variant.MatrixTimesVector'><code>MatrixTimesVector</code></td><td></td></tr><tr><td id='variant.MatrixTimesMatrix'><code>MatrixTimesMatrix</code></td><td></td></tr><tr><td id='variant.OuterProduct'><code>OuterProduct</code></td><td></td></tr><tr><td id='variant.Dot'><code>Dot</code></td><td></td></tr><tr><td id='variant.IAddCarry'><code>IAddCarry</code></td><td></td></tr><tr><td id='variant.ISubBorrow'><code>ISubBorrow</code></td><td></td></tr><tr><td id='variant.UMulExtended'><code>UMulExtended</code></td><td></td></tr><tr><td id='variant.SMulExtended'><code>SMulExtended</code></td><td></td></tr><tr><td id='variant.Any'><code>Any</code></td><td></td></tr><tr><td id='variant.All'><code>All</code></td><td></td></tr><tr><td id='variant.IsNan'><code>IsNan</code></td><td></td></tr><tr><td id='variant.IsInf'><code>IsInf</code></td><td></td></tr><tr><td id='variant.IsFinite'><code>IsFinite</code></td><td></td></tr><tr><td id='variant.IsNormal'><code>IsNormal</code></td><td></td></tr><tr><td id='variant.SignBitSet'><code>SignBitSet</code></td><td></td></tr><tr><td id='variant.LessOrGreater'><code>LessOrGreater</code></td><td></td></tr><tr><td id='variant.Ordered'><code>Ordered</code></td><td></td></tr><tr><td id='variant.Unordered'><code>Unordered</code></td><td></td></tr><tr><td id='variant.LogicalEqual'><code>LogicalEqual</code></td><td></td></tr><tr><td id='variant.LogicalNotEqual'><code>LogicalNotEqual</code></td><td></td></tr><tr><td id='variant.LogicalOr'><code>LogicalOr</code></td><td></td></tr><tr><td id='variant.LogicalAnd'><code>LogicalAnd</code></td><td></td></tr><tr><td id='variant.LogicalNot'><code>LogicalNot</code></td><td></td></tr><tr><td id='variant.Select'><code>Select</code></td><td></td></tr><tr><td id='variant.IEqual'><code>IEqual</code></td><td></td></tr><tr><td id='variant.INotEqual'><code>INotEqual</code></td><td></td></tr><tr><td id='variant.UGreaterThan'><code>UGreaterThan</code></td><td></td></tr><tr><td id='variant.SGreaterThan'><code>SGreaterThan</code></td><td></td></tr><tr><td id='variant.UGreaterThanEqual'><code>UGreaterThanEqual</code></td><td></td></tr><tr><td id='variant.SGreaterThanEqual'><code>SGreaterThanEqual</code></td><td></td></tr><tr><td id='variant.ULessThan'><code>ULessThan</code></td><td></td></tr><tr><td id='variant.SLessThan'><code>SLessThan</code></td><td></td></tr><tr><td id='variant.ULessThanEqual'><code>ULessThanEqual</code></td><td></td></tr><tr><td id='variant.SLessThanEqual'><code>SLessThanEqual</code></td><td></td></tr><tr><td id='variant.FOrdEqual'><code>FOrdEqual</code></td><td></td></tr><tr><td id='variant.FUnordEqual'><code>FUnordEqual</code></td><td></td></tr><tr><td id='variant.FOrdNotEqual'><code>FOrdNotEqual</code></td><td></td></tr><tr><td id='variant.FUnordNotEqual'><code>FUnordNotEqual</code></td><td></td></tr><tr><td id='variant.FOrdLessThan'><code>FOrdLessThan</code></td><td></td></tr><tr><td id='variant.FUnordLessThan'><code>FUnordLessThan</code></td><td></td></tr><tr><td id='variant.FOrdGreaterThan'><code>FOrdGreaterThan</code></td><td></td></tr><tr><td id='variant.FUnordGreaterThan'><code>FUnordGreaterThan</code></td><td></td></tr><tr><td id='variant.FOrdLessThanEqual'><code>FOrdLessThanEqual</code></td><td></td></tr><tr><td id='variant.FUnordLessThanEqual'><code>FUnordLessThanEqual</code></td><td></td></tr><tr><td id='variant.FOrdGreaterThanEqual'><code>FOrdGreaterThanEqual</code></td><td></td></tr><tr><td id='variant.FUnordGreaterThanEqual'><code>FUnordGreaterThanEqual</code></td><td></td></tr><tr><td id='variant.ShiftRightLogical'><code>ShiftRightLogical</code></td><td></td></tr><tr><td id='variant.ShiftRightArithmetic'><code>ShiftRightArithmetic</code></td><td></td></tr><tr><td id='variant.ShiftLeftLogical'><code>ShiftLeftLogical</code></td><td></td></tr><tr><td id='variant.BitwiseOr'><code>BitwiseOr</code></td><td></td></tr><tr><td id='variant.BitwiseXor'><code>BitwiseXor</code></td><td></td></tr><tr><td id='variant.BitwiseAnd'><code>BitwiseAnd</code></td><td></td></tr><tr><td id='variant.Not'><code>Not</code></td><td></td></tr><tr><td id='variant.BitFieldInsert'><code>BitFieldInsert</code></td><td></td></tr><tr><td id='variant.BitFieldSExtract'><code>BitFieldSExtract</code></td><td></td></tr><tr><td id='variant.BitFieldUExtract'><code>BitFieldUExtract</code></td><td></td></tr><tr><td id='variant.BitReverse'><code>BitReverse</code></td><td></td></tr><tr><td id='variant.BitCount'><code>BitCount</code></td><td></td></tr><tr><td id='variant.DPdx'><code>DPdx</code></td><td></td></tr><tr><td id='variant.DPdy'><code>DPdy</code></td><td></td></tr><tr><td id='variant.Fwidth'><code>Fwidth</code></td><td></td></tr><tr><td id='variant.DPdxFine'><code>DPdxFine</code></td><td></td></tr><tr><td id='variant.DPdyFine'><code>DPdyFine</code></td><td></td></tr><tr><td id='variant.FwidthFine'><code>FwidthFine</code></td><td></td></tr><tr><td id='variant.DPdxCoarse'><code>DPdxCoarse</code></td><td></td></tr><tr><td id='variant.DPdyCoarse'><code>DPdyCoarse</code></td><td></td></tr><tr><td id='variant.FwidthCoarse'><code>FwidthCoarse</code></td><td></td></tr><tr><td id='variant.EmitVertex'><code>EmitVertex</code></td><td></td></tr><tr><td id='variant.EndPrimitive'><code>EndPrimitive</code></td><td></td></tr><tr><td id='variant.EmitStreamVertex'><code>EmitStreamVertex</code></td><td></td></tr><tr><td id='variant.EndStreamPrimitive'><code>EndStreamPrimitive</code></td><td></td></tr><tr><td id='variant.ControlBarrier'><code>ControlBarrier</code></td><td></td></tr><tr><td id='variant.MemoryBarrier'><code>MemoryBarrier</code></td><td></td></tr><tr><td id='variant.AtomicLoad'><code>AtomicLoad</code></td><td></td></tr><tr><td id='variant.AtomicStore'><code>AtomicStore</code></td><td></td></tr><tr><td id='variant.AtomicExchange'><code>AtomicExchange</code></td><td></td></tr><tr><td id='variant.AtomicCompareExchange'><code>AtomicCompareExchange</code></td><td></td></tr><tr><td id='variant.AtomicCompareExchangeWeak'><code>AtomicCompareExchangeWeak</code></td><td></td></tr><tr><td id='variant.AtomicIIncrement'><code>AtomicIIncrement</code></td><td></td></tr><tr><td id='variant.AtomicIDecrement'><code>AtomicIDecrement</code></td><td></td></tr><tr><td id='variant.AtomicIAdd'><code>AtomicIAdd</code></td><td></td></tr><tr><td id='variant.AtomicISub'><code>AtomicISub</code></td><td></td></tr><tr><td id='variant.AtomicSMin'><code>AtomicSMin</code></td><td></td></tr><tr><td id='variant.AtomicUMin'><code>AtomicUMin</code></td><td></td></tr><tr><td id='variant.AtomicSMax'><code>AtomicSMax</code></td><td></td></tr><tr><td id='variant.AtomicUMax'><code>AtomicUMax</code></td><td></td></tr><tr><td id='variant.AtomicAnd'><code>AtomicAnd</code></td><td></td></tr><tr><td id='variant.AtomicOr'><code>AtomicOr</code></td><td></td></tr><tr><td id='variant.AtomicXor'><code>AtomicXor</code></td><td></td></tr><tr><td id='variant.Phi'><code>Phi</code></td><td></td></tr><tr><td id='variant.LoopMerge'><code>LoopMerge</code></td><td></td></tr><tr><td id='variant.SelectionMerge'><code>SelectionMerge</code></td><td></td></tr><tr><td id='variant.Label'><code>Label</code></td><td></td></tr><tr><td id='variant.Branch'><code>Branch</code></td><td></td></tr><tr><td id='variant.BranchConditional'><code>BranchConditional</code></td><td></td></tr><tr><td id='variant.Switch'><code>Switch</code></td><td></td></tr><tr><td id='variant.Kill'><code>Kill</code></td><td></td></tr><tr><td id='variant.Return'><code>Return</code></td><td></td></tr><tr><td id='variant.ReturnValue'><code>ReturnValue</code></td><td></td></tr><tr><td id='variant.Unreachable'><code>Unreachable</code></td><td></td></tr><tr><td id='variant.LifetimeStart'><code>LifetimeStart</code></td><td></td></tr><tr><td id='variant.LifetimeStop'><code>LifetimeStop</code></td><td></td></tr><tr><td id='variant.GroupAsyncCopy'><code>GroupAsyncCopy</code></td><td></td></tr><tr><td id='variant.GroupWaitEvents'><code>GroupWaitEvents</code></td><td></td></tr><tr><td id='variant.GroupAll'><code>GroupAll</code></td><td></td></tr><tr><td id='variant.GroupAny'><code>GroupAny</code></td><td></td></tr><tr><td id='variant.GroupBroadcast'><code>GroupBroadcast</code></td><td></td></tr><tr><td id='variant.GroupIAdd'><code>GroupIAdd</code></td><td></td></tr><tr><td id='variant.GroupFAdd'><code>GroupFAdd</code></td><td></td></tr><tr><td id='variant.GroupFMin'><code>GroupFMin</code></td><td></td></tr><tr><td id='variant.GroupUMin'><code>GroupUMin</code></td><td></td></tr><tr><td id='variant.GroupSMin'><code>GroupSMin</code></td><td></td></tr><tr><td id='variant.GroupFMax'><code>GroupFMax</code></td><td></td></tr><tr><td id='variant.GroupUMax'><code>GroupUMax</code></td><td></td></tr><tr><td id='variant.GroupSMax'><code>GroupSMax</code></td><td></td></tr><tr><td id='variant.ReadPipe'><code>ReadPipe</code></td><td></td></tr><tr><td id='variant.WritePipe'><code>WritePipe</code></td><td></td></tr><tr><td id='variant.ReservedReadPipe'><code>ReservedReadPipe</code></td><td></td></tr><tr><td id='variant.ReservedWritePipe'><code>ReservedWritePipe</code></td><td></td></tr><tr><td id='variant.ReserveReadPipePackets'><code>ReserveReadPipePackets</code></td><td></td></tr><tr><td id='variant.ReserveWritePipePackets'><code>ReserveWritePipePackets</code></td><td></td></tr><tr><td id='variant.CommitReadPipe'><code>CommitReadPipe</code></td><td></td></tr><tr><td id='variant.CommitWritePipe'><code>CommitWritePipe</code></td><td></td></tr><tr><td id='variant.IsValidReserveId'><code>IsValidReserveId</code></td><td></td></tr><tr><td id='variant.GetNumPipePackets'><code>GetNumPipePackets</code></td><td></td></tr><tr><td id='variant.GetMaxPipePackets'><code>GetMaxPipePackets</code></td><td></td></tr><tr><td id='variant.GroupReserveReadPipePackets'><code>GroupReserveReadPipePackets</code></td><td></td></tr><tr><td id='variant.GroupReserveWritePipePackets'><code>GroupReserveWritePipePackets</code></td><td></td></tr><tr><td id='variant.GroupCommitReadPipe'><code>GroupCommitReadPipe</code></td><td></td></tr><tr><td id='variant.GroupCommitWritePipe'><code>GroupCommitWritePipe</code></td><td></td></tr><tr><td id='variant.EnqueueMarker'><code>EnqueueMarker</code></td><td></td></tr><tr><td id='variant.EnqueueKernel'><code>EnqueueKernel</code></td><td></td></tr><tr><td id='variant.GetKernelNDrangeSubGroupCount'><code>GetKernelNDrangeSubGroupCount</code></td><td></td></tr><tr><td id='variant.GetKernelNDrangeMaxSubGroupSize'><code>GetKernelNDrangeMaxSubGroupSize</code></td><td></td></tr><tr><td id='variant.GetKernelWorkGroupSize'><code>GetKernelWorkGroupSize</code></td><td></td></tr><tr><td id='variant.GetKernelPreferredWorkGroupSizeMultiple'><code>GetKernelPreferredWorkGroupSizeMultiple</code></td><td></td></tr><tr><td id='variant.RetainEvent'><code>RetainEvent</code></td><td></td></tr><tr><td id='variant.ReleaseEvent'><code>ReleaseEvent</code></td><td></td></tr><tr><td id='variant.CreateUserEvent'><code>CreateUserEvent</code></td><td></td></tr><tr><td id='variant.IsValidEvent'><code>IsValidEvent</code></td><td></td></tr><tr><td id='variant.SetUserEventStatus'><code>SetUserEventStatus</code></td><td></td></tr><tr><td id='variant.CaptureEventProfilingInfo'><code>CaptureEventProfilingInfo</code></td><td></td></tr><tr><td id='variant.GetDefaultQueue'><code>GetDefaultQueue</code></td><td></td></tr><tr><td id='variant.BuildNDRange'><code>BuildNDRange</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleImplicitLod'><code>ImageSparseSampleImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleExplicitLod'><code>ImageSparseSampleExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleDrefImplicitLod'><code>ImageSparseSampleDrefImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleDrefExplicitLod'><code>ImageSparseSampleDrefExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleProjImplicitLod'><code>ImageSparseSampleProjImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleProjExplicitLod'><code>ImageSparseSampleProjExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleProjDrefImplicitLod'><code>ImageSparseSampleProjDrefImplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseSampleProjDrefExplicitLod'><code>ImageSparseSampleProjDrefExplicitLod</code></td><td></td></tr><tr><td id='variant.ImageSparseFetch'><code>ImageSparseFetch</code></td><td></td></tr><tr><td id='variant.ImageSparseGather'><code>ImageSparseGather</code></td><td></td></tr><tr><td id='variant.ImageSparseDrefGather'><code>ImageSparseDrefGather</code></td><td></td></tr><tr><td id='variant.ImageSparseTexelsResident'><code>ImageSparseTexelsResident</code></td><td></td></tr><tr><td id='variant.NoLine'><code>NoLine</code></td><td></td></tr><tr><td id='variant.AtomicFlagTestAndSet'><code>AtomicFlagTestAndSet</code></td><td></td></tr><tr><td id='variant.AtomicFlagClear'><code>AtomicFlagClear</code></td><td></td></tr><tr><td id='variant.ImageSparseRead'><code>ImageSparseRead</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><code>fn <a href='#method.from' class='fnname'>from</a>(val: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u16.html'>u16</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a>&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a> for <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'><h4 id='method.hash' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash' class='fnname'>hash</a>&lt;__H: <a class='trait' href='https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html' title='core::hash::Hasher'>Hasher</a>&gt;(&amp;self, __arg_0: &amp;mut __H)</code></h4>
+<h4 id='method.hash_slice' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[Self]</a>, state: &amp;mut H) <span class='where'>where H: <a class='trait' href='https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html' title='core::hash::Hasher'>Hasher</a></span></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='enum' href='../../spirv_utils/desc/enum.Op.html' title='spirv_utils::desc::Op'>Op</a></code></h3><div class='impl-items'></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "spirv_utils";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

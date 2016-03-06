@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Decoration` enum in crate `spirv_utils`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Decoration">
+
+    <title>spirv_utils::instruction::Decoration - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>spirv_utils</a>::<wbr><a href='index.html'>instruction</a></p><script>window.sidebarCurrent = {name: 'Decoration', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>spirv_utils</a>::<wbr><a href='index.html'>instruction</a>::<wbr><a class='enum' href=''>Decoration</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-7868' class='srclink' href='../../src/spirv_utils/instruction.rs.html#94-138' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Decoration {
+    RelaxedPrecision,
+    SpecId(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Block,
+    BufferBlock,
+    RowMajor,
+    ColMajor,
+    ArrayStride(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    MatrixStride(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    GLSLShared,
+    GLSLPacked,
+    CPacked,
+    BuiltIn(<a class='enum' href='../../spirv_utils/desc/enum.BuiltIn.html' title='spirv_utils::desc::BuiltIn'>BuiltIn</a>),
+    NoPerspective,
+    Flat,
+    Patch,
+    Centroid,
+    Sample,
+    Invariant,
+    Restrict,
+    Aliased,
+    Volatile,
+    Constant,
+    Coherent,
+    NonWritable,
+    NonReadable,
+    Uniform,
+    SaturatedConversion,
+    Stream(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Location(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Component(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Index(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Binding(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    DescriptorSet(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Offset(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    XfbBuffer(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    XfbStride(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    FuncParamAttr(<a class='enum' href='../../spirv_utils/desc/enum.FuncParamAttr.html' title='spirv_utils::desc::FuncParamAttr'>FuncParamAttr</a>),
+    FPRoundingMode(<a class='enum' href='../../spirv_utils/desc/enum.FPRoundingMode.html' title='spirv_utils::desc::FPRoundingMode'>FPRoundingMode</a>),
+    FPFastMathMode(<a class='struct' href='../../spirv_utils/desc/struct.FPFastMathMode.html' title='spirv_utils::desc::FPFastMathMode'>FPFastMathMode</a>),
+    LinkageAttributes(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='enum' href='../../spirv_utils/desc/enum.LinkageType.html' title='spirv_utils::desc::LinkageType'>LinkageType</a>),
+    NoContraction,
+    InputAttachmentIndex(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    Alignment(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+}</pre><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.RelaxedPrecision'><code>RelaxedPrecision</code></td><td></td></tr><tr><td id='variant.SpecId'><code>SpecId</code></td><td></td></tr><tr><td id='variant.Block'><code>Block</code></td><td></td></tr><tr><td id='variant.BufferBlock'><code>BufferBlock</code></td><td></td></tr><tr><td id='variant.RowMajor'><code>RowMajor</code></td><td></td></tr><tr><td id='variant.ColMajor'><code>ColMajor</code></td><td></td></tr><tr><td id='variant.ArrayStride'><code>ArrayStride</code></td><td></td></tr><tr><td id='variant.MatrixStride'><code>MatrixStride</code></td><td></td></tr><tr><td id='variant.GLSLShared'><code>GLSLShared</code></td><td></td></tr><tr><td id='variant.GLSLPacked'><code>GLSLPacked</code></td><td></td></tr><tr><td id='variant.CPacked'><code>CPacked</code></td><td></td></tr><tr><td id='variant.BuiltIn'><code>BuiltIn</code></td><td></td></tr><tr><td id='variant.NoPerspective'><code>NoPerspective</code></td><td></td></tr><tr><td id='variant.Flat'><code>Flat</code></td><td></td></tr><tr><td id='variant.Patch'><code>Patch</code></td><td></td></tr><tr><td id='variant.Centroid'><code>Centroid</code></td><td></td></tr><tr><td id='variant.Sample'><code>Sample</code></td><td></td></tr><tr><td id='variant.Invariant'><code>Invariant</code></td><td></td></tr><tr><td id='variant.Restrict'><code>Restrict</code></td><td></td></tr><tr><td id='variant.Aliased'><code>Aliased</code></td><td></td></tr><tr><td id='variant.Volatile'><code>Volatile</code></td><td></td></tr><tr><td id='variant.Constant'><code>Constant</code></td><td></td></tr><tr><td id='variant.Coherent'><code>Coherent</code></td><td></td></tr><tr><td id='variant.NonWritable'><code>NonWritable</code></td><td></td></tr><tr><td id='variant.NonReadable'><code>NonReadable</code></td><td></td></tr><tr><td id='variant.Uniform'><code>Uniform</code></td><td></td></tr><tr><td id='variant.SaturatedConversion'><code>SaturatedConversion</code></td><td></td></tr><tr><td id='variant.Stream'><code>Stream</code></td><td></td></tr><tr><td id='variant.Location'><code>Location</code></td><td></td></tr><tr><td id='variant.Component'><code>Component</code></td><td></td></tr><tr><td id='variant.Index'><code>Index</code></td><td></td></tr><tr><td id='variant.Binding'><code>Binding</code></td><td></td></tr><tr><td id='variant.DescriptorSet'><code>DescriptorSet</code></td><td></td></tr><tr><td id='variant.Offset'><code>Offset</code></td><td></td></tr><tr><td id='variant.XfbBuffer'><code>XfbBuffer</code></td><td></td></tr><tr><td id='variant.XfbStride'><code>XfbStride</code></td><td></td></tr><tr><td id='variant.FuncParamAttr'><code>FuncParamAttr</code></td><td></td></tr><tr><td id='variant.FPRoundingMode'><code>FPRoundingMode</code></td><td></td></tr><tr><td id='variant.FPFastMathMode'><code>FPFastMathMode</code></td><td></td></tr><tr><td id='variant.LinkageAttributes'><code>LinkageAttributes</code></td><td></td></tr><tr><td id='variant.NoContraction'><code>NoContraction</code></td><td></td></tr><tr><td id='variant.InputAttachmentIndex'><code>InputAttachmentIndex</code></td><td></td></tr><tr><td id='variant.Alignment'><code>Alignment</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../../spirv_utils/instruction/enum.Decoration.html' title='spirv_utils::instruction::Decoration'>Decoration</a></code></h3><div class='impl-items'><h4 id='method.to_desc' class='method'><code>fn <a href='#method.to_desc' class='fnname'>to_desc</a>(&amp;self) -&gt; <a class='enum' href='../../spirv_utils/desc/enum.Decoration.html' title='spirv_utils::desc::Decoration'>Decoration</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../spirv_utils/instruction/enum.Decoration.html' title='spirv_utils::instruction::Decoration'>Decoration</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../spirv_utils/instruction/enum.Decoration.html' title='spirv_utils::instruction::Decoration'>Decoration</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../spirv_utils/instruction/enum.Decoration.html' title='spirv_utils::instruction::Decoration'>Decoration</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "spirv_utils";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

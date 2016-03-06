@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["desc",""],["instruction",""],["parse",""]],"struct":[["RawModule","Minimal representation of a SPIR-V module."],["Uses",""]]});

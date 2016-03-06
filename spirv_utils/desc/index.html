@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `desc` mod in crate `spirv_utils`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, desc">
+
+    <title>spirv_utils::desc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>spirv_utils</a></p><script>window.sidebarCurrent = {name: 'desc', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>spirv_utils</a>::<wbr><a class='mod' href=''>desc</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-6' class='srclink' href='../../src/spirv_utils/desc.rs.html#9-940' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FPFastMathMode.html'
+                               title='spirv_utils::desc::FPFastMathMode'>FPFastMathMode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FunctionControl.html'
+                               title='spirv_utils::desc::FunctionControl'>FunctionControl</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Id.html'
+                               title='spirv_utils::desc::Id'>Id</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ImageOperands.html'
+                               title='spirv_utils::desc::ImageOperands'>ImageOperands</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.KernelProfilingInfo.html'
+                               title='spirv_utils::desc::KernelProfilingInfo'>KernelProfilingInfo</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.LoopControl.html'
+                               title='spirv_utils::desc::LoopControl'>LoopControl</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MemoryAccess.html'
+                               title='spirv_utils::desc::MemoryAccess'>MemoryAccess</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MemoryOrdering.html'
+                               title='spirv_utils::desc::MemoryOrdering'>MemoryOrdering</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ResultId.html'
+                               title='spirv_utils::desc::ResultId'>ResultId</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SelectionControl.html'
+                               title='spirv_utils::desc::SelectionControl'>SelectionControl</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.TypeId.html'
+                               title='spirv_utils::desc::TypeId'>TypeId</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ValueId.html'
+                               title='spirv_utils::desc::ValueId'>ValueId</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.AccessQualifier.html'
+                               title='spirv_utils::desc::AccessQualifier'>AccessQualifier</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.AddressingModel.html'
+                               title='spirv_utils::desc::AddressingModel'>AddressingModel</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.BuiltIn.html'
+                               title='spirv_utils::desc::BuiltIn'>BuiltIn</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Capability.html'
+                               title='spirv_utils::desc::Capability'>Capability</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Decoration.html'
+                               title='spirv_utils::desc::Decoration'>Decoration</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Dim.html'
+                               title='spirv_utils::desc::Dim'>Dim</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ExecutionMode.html'
+                               title='spirv_utils::desc::ExecutionMode'>ExecutionMode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ExecutionModel.html'
+                               title='spirv_utils::desc::ExecutionModel'>ExecutionModel</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FPRoundingMode.html'
+                               title='spirv_utils::desc::FPRoundingMode'>FPRoundingMode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.FuncParamAttr.html'
+                               title='spirv_utils::desc::FuncParamAttr'>FuncParamAttr</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.GroupOperation.html'
+                               title='spirv_utils::desc::GroupOperation'>GroupOperation</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ImageChannelDataType.html'
+                               title='spirv_utils::desc::ImageChannelDataType'>ImageChannelDataType</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ImageChannelOrder.html'
+                               title='spirv_utils::desc::ImageChannelOrder'>ImageChannelOrder</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.ImageFormat.html'
+                               title='spirv_utils::desc::ImageFormat'>ImageFormat</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.KernelEnqueueFlags.html'
+                               title='spirv_utils::desc::KernelEnqueueFlags'>KernelEnqueueFlags</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.LinkageType.html'
+                               title='spirv_utils::desc::LinkageType'>LinkageType</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MemoryModel.html'
+                               title='spirv_utils::desc::MemoryModel'>MemoryModel</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Op.html'
+                               title='spirv_utils::desc::Op'>Op</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SamplerAddressingMode.html'
+                               title='spirv_utils::desc::SamplerAddressingMode'>SamplerAddressingMode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SamplerFilterMode.html'
+                               title='spirv_utils::desc::SamplerFilterMode'>SamplerFilterMode</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.Scope.html'
+                               title='spirv_utils::desc::Scope'>Scope</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SrcLang.html'
+                               title='spirv_utils::desc::SrcLang'>SrcLang</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.StorageClass.html'
+                               title='spirv_utils::desc::StorageClass'>StorageClass</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FastMathAllowRecip.html'
+                               title='spirv_utils::desc::FastMathAllowRecip'>FastMathAllowRecip</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FastMathFast.html'
+                               title='spirv_utils::desc::FastMathFast'>FastMathFast</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FastMathNSZ.html'
+                               title='spirv_utils::desc::FastMathNSZ'>FastMathNSZ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FastMathNotInf.html'
+                               title='spirv_utils::desc::FastMathNotInf'>FastMathNotInf</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FastMathNotNaN.html'
+                               title='spirv_utils::desc::FastMathNotNaN'>FastMathNotNaN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FnCtlConst.html'
+                               title='spirv_utils::desc::FnCtlConst'>FnCtlConst</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FnCtlDontInline.html'
+                               title='spirv_utils::desc::FnCtlDontInline'>FnCtlDontInline</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FnCtlInline.html'
+                               title='spirv_utils::desc::FnCtlInline'>FnCtlInline</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FnCtlPure.html'
+                               title='spirv_utils::desc::FnCtlPure'>FnCtlPure</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpBias.html'
+                               title='spirv_utils::desc::ImgOpBias'>ImgOpBias</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpConstOffset.html'
+                               title='spirv_utils::desc::ImgOpConstOffset'>ImgOpConstOffset</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpConstOffsets.html'
+                               title='spirv_utils::desc::ImgOpConstOffsets'>ImgOpConstOffsets</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpGrad.html'
+                               title='spirv_utils::desc::ImgOpGrad'>ImgOpGrad</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpLod.html'
+                               title='spirv_utils::desc::ImgOpLod'>ImgOpLod</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpMinLod.html'
+                               title='spirv_utils::desc::ImgOpMinLod'>ImgOpMinLod</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpOffset.html'
+                               title='spirv_utils::desc::ImgOpOffset'>ImgOpOffset</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ImgOpSample.html'
+                               title='spirv_utils::desc::ImgOpSample'>ImgOpSample</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.LoopCtlDontUnroll.html'
+                               title='spirv_utils::desc::LoopCtlDontUnroll'>LoopCtlDontUnroll</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.LoopCtlUnroll.html'
+                               title='spirv_utils::desc::LoopCtlUnroll'>LoopCtlUnroll</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemAccAligned.html'
+                               title='spirv_utils::desc::MemAccAligned'>MemAccAligned</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemAccNontemporal.html'
+                               title='spirv_utils::desc::MemAccNontemporal'>MemAccNontemporal</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemAccVolatile.html'
+                               title='spirv_utils::desc::MemAccVolatile'>MemAccVolatile</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdAcquire.html'
+                               title='spirv_utils::desc::MemOrdAcquire'>MemOrdAcquire</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdAcquireRelease.html'
+                               title='spirv_utils::desc::MemOrdAcquireRelease'>MemOrdAcquireRelease</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdAtomicCounterMemory.html'
+                               title='spirv_utils::desc::MemOrdAtomicCounterMemory'>MemOrdAtomicCounterMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdCrossWorkgroupMemory.html'
+                               title='spirv_utils::desc::MemOrdCrossWorkgroupMemory'>MemOrdCrossWorkgroupMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdImageMemory.html'
+                               title='spirv_utils::desc::MemOrdImageMemory'>MemOrdImageMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdRelease.html'
+                               title='spirv_utils::desc::MemOrdRelease'>MemOrdRelease</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdSequentiallyConsistent.html'
+                               title='spirv_utils::desc::MemOrdSequentiallyConsistent'>MemOrdSequentiallyConsistent</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdSubgroupMemory.html'
+                               title='spirv_utils::desc::MemOrdSubgroupMemory'>MemOrdSubgroupMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdUniformMemory.html'
+                               title='spirv_utils::desc::MemOrdUniformMemory'>MemOrdUniformMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MemOrdWorkgroupMemory.html'
+                               title='spirv_utils::desc::MemOrdWorkgroupMemory'>MemOrdWorkgroupMemory</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ProfInfoCmdExecTime.html'
+                               title='spirv_utils::desc::ProfInfoCmdExecTime'>ProfInfoCmdExecTime</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SelCtlDontFlatten.html'
+                               title='spirv_utils::desc::SelCtlDontFlatten'>SelCtlDontFlatten</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SelCtlFlatten.html'
+                               title='spirv_utils::desc::SelCtlFlatten'>SelCtlFlatten</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "spirv_utils";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

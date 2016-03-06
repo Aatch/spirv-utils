@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `RawModule` struct in crate `spirv_utils`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, RawModule">
+
+    <title>spirv_utils::RawModule - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>spirv_utils</a></p><script>window.sidebarCurrent = {name: 'RawModule', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>spirv_utils</a>::<wbr><a class='struct' href=''>RawModule</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-11911' class='srclink' href='../src/spirv_utils/lib.rs.html#23-27' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RawModule {
+    // some fields omitted
+}</pre><div class='docblock'><p>Minimal representation of a SPIR-V module.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../spirv_utils/struct.RawModule.html' title='spirv_utils::RawModule'>RawModule</a></code></h3><div class='impl-items'><h4 id='method.load_module' class='method'><code>fn <a href='#method.load_module' class='fnname'>load_module</a>&lt;P: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>&gt;&gt;(path: P) -&gt; <a class='type' href='../spirv_utils/parse/type.Result.html' title='spirv_utils::parse::Result'>Result</a>&lt;<a class='struct' href='../spirv_utils/struct.RawModule.html' title='spirv_utils::RawModule'>RawModule</a>&gt;</code></h4>
+<div class='docblock'><p>Load a module from a file</p>
+</div><h4 id='method.read_module' class='method'><code>fn <a href='#method.read_module' class='fnname'>read_module</a>&lt;R: <a class='trait' href='https://doc.rust-lang.org/nightly/std/io/trait.Read.html' title='std::io::Read'>Read</a>&gt;(reader: R) -&gt; <a class='type' href='../spirv_utils/parse/type.Result.html' title='spirv_utils::parse::Result'>Result</a>&lt;<a class='struct' href='../spirv_utils/struct.RawModule.html' title='spirv_utils::RawModule'>RawModule</a>&gt;</code></h4>
+<div class='docblock'><p>Read a module</p>
+</div><h4 id='method.instructions' class='method'><code>fn <a href='#method.instructions' class='fnname'>instructions</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a [</a><a class='enum' href='../spirv_utils/instruction/enum.Instruction.html' title='spirv_utils::instruction::Instruction'>Instruction</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Gets the instructions in the module</p>
+</div><h4 id='method.def_index' class='method'><code>fn <a href='#method.def_index' class='fnname'>def_index</a>&lt;I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../spirv_utils/desc/struct.Id.html' title='spirv_utils::desc::Id'>Id</a>&gt;&gt;(&amp;self, id: I) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</code></h4>
+<div class='docblock'><p>Gets the index of the instruction that defines the given id, if
+any</p>
+</div><h4 id='method.use_indices' class='method'><code>fn <a href='#method.use_indices' class='fnname'>use_indices</a>&lt;'a, I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../spirv_utils/desc/struct.Id.html' title='spirv_utils::desc::Id'>Id</a>&gt;&gt;(&amp;'a self, id: I) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a [</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt;</code></h4>
+<div class='docblock'><p>Gets the indices of the instructions that use the given id</p>
+</div><h4 id='method.def' class='method'><code>fn <a href='#method.def' class='fnname'>def</a>&lt;'a, I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../spirv_utils/desc/struct.Id.html' title='spirv_utils::desc::Id'>Id</a>&gt;&gt;(&amp;'a self, id: I) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='enum' href='../spirv_utils/instruction/enum.Instruction.html' title='spirv_utils::instruction::Instruction'>Instruction</a>&gt;</code></h4>
+<div class='docblock'><p>Gets the instruction that defines the given Id, if any</p>
+</div><h4 id='method.uses' class='method'><code>fn <a href='#method.uses' class='fnname'>uses</a>&lt;'a, I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html' title='core::convert::Into'>Into</a>&lt;<a class='struct' href='../spirv_utils/desc/struct.Id.html' title='spirv_utils::desc::Id'>Id</a>&gt;&gt;(&amp;'a self, id: I) -&gt; <a class='struct' href='../spirv_utils/struct.Uses.html' title='spirv_utils::Uses'>Uses</a>&lt;'a&gt;</code></h4>
+<div class='docblock'><p>Returns an iterator over the uses of the given Id</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "spirv_utils";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
