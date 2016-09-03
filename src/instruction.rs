@@ -90,7 +90,7 @@ impl ExecutionMode {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Decoration {
     RelaxedPrecision,
     SpecId(u32),

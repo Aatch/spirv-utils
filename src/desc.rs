@@ -110,7 +110,7 @@ macro_rules! def_enum {
     );
     (enum $en:ident : $repr:ident { $($name:ident = $code:expr),+ }) => (
         #[repr($repr)]
-        #[derive(Copy, Clone, Debug, PartialEq, Hash)]
+        #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
         pub enum $en {
             $($name = $code,)+
         }
@@ -128,7 +128,7 @@ macro_rules! def_enum {
 
 macro_rules! def_bitset {
     ($setname:ident { $($name:ident = $code:expr),+ }) => (
-        #[derive(Copy, Clone, PartialEq, Hash)]
+        #[derive(Copy, Clone, PartialEq, Eq, Hash)]
         pub struct $setname(u32);
 
         impl $setname {
