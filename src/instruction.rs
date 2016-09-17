@@ -256,4 +256,8 @@ impl ImageOperands {
 
         idx
     }
+
+    pub fn to_desc(&self) -> desc::ImageOperands {
+        self.set
+    }
 }

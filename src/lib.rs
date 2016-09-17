@@ -12,6 +12,7 @@ use std::path::Path;
 pub mod desc;
 pub mod instruction;
 pub mod parse;
+pub mod write;
 
 use desc::Id;
 use instruction::Instruction;
