@@ -27,7 +27,7 @@ group Extension;
 group Mode;
 14  MemoryModel addressing-model memory-model;
 15  EntryPoint execution-model func:value-id name:string interface:[id];
-16  ExecutionMode execution-mode;
+16  ExecutionMode entry:value-id execution-mode;
 17  Capability capability;
 
 group Type;

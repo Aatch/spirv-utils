@@ -81,6 +81,9 @@ fn main() {
 
             let parser_output = CodeFile::create(&dest.join("inst_parser.rs"));
             gen_parser(&instructions, parser_output).unwrap();
+
+            let writer_output = CodeFile::create(&dest.join("inst_writer.rs"));
+            gen_writer(&instructions, writer_output).unwrap();
         }
         Err(e) => {
             let mut stderr = std::io::stderr();
@@ -388,6 +391,76 @@ fn gen_parser(insts: &[Instruction], mut dest: CodeFile) -> Result<()> {
     dest.end_block("}")
 }
 
+fn gen_writer(insts: &[Instruction], mut dest: CodeFile) -> Result<()> {
+    try!(dest.start_block("pub fn to_bytecode(inst: Instruction) -> Vec<u32> {"));
+    try!(dest.start_block("let mut raw = match inst {"));
+
+    for inst in insts {
+        if inst.params.len() == 0 {
+            try!(dest.write_line(&format!(
+                "Instruction::{name} => RawInstruction {{ opcode: Op::{name} as u16, params: vec![] }},", name=inst.name)));
+            continue;
+        }
+
+        let param_list = inst.params.iter()
+            .map(|param| normalize_name(&param.name))
+            .collect::<Vec<_>>()
+            .join(", ");
+
+        try!(dest.start_block(&format!("Instruction::{} {{{}}} => {{", inst.name, param_list)));
+        try!(dest.write_line("let mut _params : Vec<u32> = Vec::new();"));
+
+        for param in &inst.params {
+            let name = format!("{}", normalize_name(&param.name));
+
+            match param.ty {
+                ParamTy::Single(ref ty, opt) => {
+                    let name = match *ty {
+                        Ty::Id | Ty::ResultId | Ty::ResultType | Ty::TypeId | Ty::ValueId => {
+                            try!(dest.write_line(&format!("if {name}.0 != 0 {{
+                                _params.push({name}.0);
+                            }}", name=name)));
+                            continue;
+                        },
+                        Ty::ImageOperands => name,
+                        _ if opt => format!("{}.unwrap()", name),
+                        _ => name,
+                    };
+                    try!(dest.write_line(&ty.push_words("_params", name)));
+                },
+                ParamTy::Repeat(ref ty) => {
+                    try!(dest.start_block(&format!("for elem in {}.into_iter() {{", name)));
+                    try!(dest.write_line(&ty.push_words("_params", "(*elem)".into())));
+                    try!(dest.end_block("}"));
+                },
+                ParamTy::RepeatMany(ref tys) => {
+                    try!(dest.start_block(&format!("for elem in {}.into_iter() {{", name)));
+
+                    for (ty, i) in tys.iter().zip(0..tys.len()) {
+                        let name = format!("(elem.{})", i);
+                        try!(dest.write_line(&ty.push_words("_params", name)));
+                    }
+
+                    try!(dest.end_block("}"));
+                },
+            }
+        }
+
+        try!(dest.write_line(&format!("RawInstruction {{ opcode: Op::{} as u16, params: _params }}", inst.name)));
+        try!(dest.end_block("}"));
+    }
+
+    try!(dest.write_line("_ => unimplemented!()"));
+    try!(dest.end_block("};"));
+
+    try!(dest.write_line("let first_word: [u16; 2] = [raw.opcode, 1 + raw.params.len() as u16];"));
+    try!(dest.write_line("let mut res = vec![unsafe { ::std::mem::transmute::<[u16; 2], u32>(first_word) }];"));
+    try!(dest.write_line("res.append(&mut raw.params);"));
+
+    try!(dest.write_line("res"));
+    dest.end_block("}")
+}
+
 fn normalize_name<'a>(s: &'a str) -> Cow<'a, str> {
     if s.contains('-') {
         s.replace("-", "_").into()
@@ -545,6 +618,63 @@ impl Ty {
             };
 
             name.into()
+        }
+    }
+
+    pub fn push_words(&self, vec: &'static str, name: String) -> String {
+        use self::Ty::*;
+        match *self {
+            Id | ResultId | ResultType | TypeId | ValueId =>
+                format!("{}.push({}.0);", vec, name),
+            FPFastMathMode | MemoryAccess | FunctionControl | LoopControl | SelectionControl =>
+                format!("{}.push({}.bits());", vec, name),
+            ExecutionMode =>
+                format!("{}.push({}.to_desc() as u32);", vec, name),
+            Decoration =>
+                format!("{vec}.push({name}.to_desc() as u32);
+                match {name} {{
+                    Decoration::SpecId(n) |
+                    Decoration::ArrayStride(n) |
+                    Decoration::MatrixStride(n) |
+                    Decoration::Stream(n) |
+                    Decoration::Location(n) |
+                    Decoration::Component(n) |
+                    Decoration::Index(n) |
+                    Decoration::Binding(n) |
+                    Decoration::DescriptorSet(n) |
+                    Decoration::Offset(n) |
+                    Decoration::XfbBuffer(n) |
+                    Decoration::XfbStride(n) |
+                    Decoration::InputAttachmentIndex(n) |
+                    Decoration::Alignment(n) => {{
+                        {vec}.push(n as u32);
+                    }},
+                    Decoration::BuiltIn(b) => {{
+                        {vec}.push(b as u32);
+                    }}
+                    Decoration::FuncParamAttr(attr) => {{
+                        {vec}.push(attr as u32);
+                    }}
+                    Decoration::FPRoundingMode(attr) => {{
+                        {vec}.push(attr as u32);
+                    }}
+                    Decoration::FPFastMathMode(attr) => {{
+                        {vec}.push(attr.bits());
+                    }}
+                    Decoration::LinkageAttributes(name, ty) => {{
+                        {vec}.append(&mut StringBuilder::to_words(name));
+                        {vec}.push(ty as u32);
+                    }}
+                    _ => {{}}
+                }}", vec=vec, name=name),
+            ImageOperands =>
+                format!("{}.push({}.to_desc().bits());", vec, name),
+            String =>
+                format!("{}.append(&mut StringBuilder::to_words({}));", vec, name),
+            Number =>
+                format!("{}.push({});", vec, name),
+            _ =>
+                format!("{}.push({} as u32);", vec, name)
         }
     }
 }
